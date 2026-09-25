@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { categoryLabel, projectCategories, projects, type Project, type ProjectCategory } from "@/content/projects";
+import { categoryLabel, projectCategories, type Project, type ProjectCategory } from "@/lib/data/types";
 import { cn } from "@/lib/cn";
 
 /**
@@ -12,7 +12,7 @@ import { cn } from "@/lib/cn";
  * Clicking a card opens the full story in a fixed-height panel that scrolls inside.
  * Visiting /projects#slug opens that project directly.
  */
-export function ProjectGrid() {
+export function ProjectGrid({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<ProjectCategory | "all">("all");
   const [open, setOpen] = useState<Project | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -40,7 +40,7 @@ export function ProjectGrid() {
       window.clearTimeout(id);
       window.removeEventListener("hashchange", openFromHash);
     };
-  }, []);
+  }, [projects]);
 
   return (
     <>
@@ -71,7 +71,7 @@ export function ProjectGrid() {
               className="group flex h-full w-full flex-col overflow-hidden rounded-card bg-plum-3 text-left text-on-plum transition-[transform,translate,rotate,scale,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_50px_-24px_rgba(0,0,0,.6)]"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
-                <Image src={p.image} alt="" fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+                <Image src={p.image} alt="" fill unoptimized={p.image.startsWith("http")} sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
               </div>
               <div className="flex flex-1 flex-col gap-2 px-[22px] pb-6 pt-5">
                 <span className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.08em] text-gold">
@@ -97,7 +97,7 @@ export function ProjectGrid() {
         {open && (
           <div className="relative grid h-full overflow-hidden rounded-card bg-cream text-ink shadow-card md:grid-cols-[5fr_6fr]">
             <div className="relative h-[180px] md:h-full">
-              <Image src={open.image} alt={open.imageAlt} fill sizes="(max-width: 760px) 94vw, 45vw" className="object-cover" />
+              <Image src={open.image} alt={open.imageAlt} fill unoptimized={open.image.startsWith("http")} sizes="(max-width: 760px) 94vw, 45vw" className="object-cover" />
             </div>
             <div className="flex min-h-0 flex-col gap-3 overflow-y-auto px-[30px] pb-[30px] pt-7">
               <span className="eyebrow pr-11 text-[0.7rem] text-maroon">

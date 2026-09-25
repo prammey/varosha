@@ -8,6 +8,8 @@
 
 - [x] 2026-09-25 — Built complete v1 mock-up (`mockup/varosha-mockup.html` + 22 photos in `mockup/img/`), published privately at https://claude.ai/artifact/5NFRxTi8UAysYMNvMtWggW
 
+- [x] 2026-09-25 — Admin panel built (/admin): projects, team (bios + photos), newsletters, events, scholarship, site details. Local-file storage now, Supabase store + schema ready to connect. Tested end to end with a scripted browser session.
+
 ## In progress
 - [x] 2026-09-25 — v1 reviewed by Prameet; v2 built to the feedback (maroon/gold/plum palette, Fraunces, animations, social rail, dark Projects/Scholarship, business-card Contact)
 - [x] 2026-09-25 — v2 reviewed ("super impressed"); v3 applied: straddling stats bar, dark How-it-works, teal projects band, modal redesign, About dropdown (Our Story / Our Team / Newsletters), Support tab removed (Donate → support page), new Newsletters page
@@ -17,7 +19,8 @@
 - [x] 2026-09-25 — Palette decided: Option A "Lamplight" (copper/paper/night)
 
 ## Next
-- [ ] Prameet reviews the live site on desktop and phone
+- [ ] Prameet demos the admin panel locally (set ADMIN_PASSWORD in .env.local, npm run dev, /admin)
+- [ ] Connect Supabase when the other person is available (schema in supabase/schema.sql)
 - [ ] Real URLs for X / YouTube / Instagram (or drop those icons) → `content/site.ts`
 - [ ] Board to review the three legal pages (marked "Draft for board review")
 - [ ] Update scholarship deadline when the next cycle opens → `content/scholarship.ts`

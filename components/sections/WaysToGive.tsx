@@ -1,14 +1,14 @@
 import Image from "next/image";
 import { CopyText } from "@/components/ui/CopyText";
-import { site } from "@/content/site";
+import type { SiteDetails } from "@/lib/data/types";
 
-const rows = [
+const buildRows = (site: SiteDetails) => [
   {
     small: "Preferred · no fees",
     label: "Zelle / QuickPay",
     body: (
       <>
-        <CopyText value={site.donate.zelle} />
+        <CopyText value={site.zelle} />
         <span>Donations via Zelle are preferred as there are no fees incurred.</span>
       </>
     ),
@@ -18,7 +18,7 @@ const rows = [
     label: "Venmo",
     body: (
       <>
-        <CopyText value={site.donate.venmo} />
+        <CopyText value={site.venmo} />
         <span>Or scan the code on the right in the Venmo app.</span>
       </>
     ),
@@ -29,7 +29,7 @@ const rows = [
     body: (
       <>
         <span>
-          Payable to <b>{site.address.name}</b>, mailed to {site.address.street}, {site.address.cityStateZip}.
+          Payable to <b>{site.addressName}</b>, mailed to {site.street}, {site.cityStateZip}.
         </span>
         <span className="font-sans text-[0.92rem]">Include your email address in the memo line so we can acknowledge your donation for tax purposes.</span>
       </>
@@ -47,7 +47,8 @@ const rows = [
 ];
 
 /** The single white panel on the Support page: four ways to give beside the QR codes. */
-export function WaysToGive() {
+export function WaysToGive({ site }: { site: SiteDetails }) {
+  const rows = buildRows(site);
   return (
     <div className="grid overflow-hidden rounded-card bg-white shadow-card md:grid-cols-[1.6fr_1fr]">
       <div className="flex flex-col px-9 py-[34px]">

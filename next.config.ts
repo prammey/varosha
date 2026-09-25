@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // stop next dev from writing AGENTS.md / CLAUDE.md into the repo
+  agentRules: false,
   // Old Wix URLs keep working once varosha.org points here.
   async redirects() {
     return [

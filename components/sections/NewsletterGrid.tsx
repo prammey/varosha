@@ -1,12 +1,12 @@
-import { newsletters } from "@/content/newsletters";
+import type { Newsletter } from "@/lib/data/types";
 
 /** Grid of year tiles, each opening that year's PDF in a new tab. */
-export function NewsletterGrid() {
+export function NewsletterGrid({ newsletters }: { newsletters: Newsletter[] }) {
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(118px,1fr))] gap-3">
       {newsletters.map((n) => (
         <a
-          key={n.year}
+          key={n.id}
           href={n.file}
           target="_blank"
           rel="noopener"

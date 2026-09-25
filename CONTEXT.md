@@ -236,6 +236,16 @@ Alt (if Prameet wants cooler/more institutional): swap Vermilion for Teal `#146C
 - Vercel: project **varosha** under Prameet's account (prameetguha), production alias **https://varosha.vercel.app**. Deployed with `vercel deploy --prod --yes`. Repo: github.com/prammey/varosha (main).
 - Prameet's build rules: intuitive image names, very organized folders, TS/TSX, commit + push as you go, don't need him during the build.
 
+## 4e. Admin panel (2026-09-25)
+
+- Scope agreed: Projects, Team (bio + photo added), Newsletters, Events, Scholarship (deadline + link), Site details. Nothing else editable.
+- Architecture: `lib/data/store.ts` interface → `local-store.ts` (data/site-data.json + public/uploads, committed to git) or `supabase-store.ts` (tables with jsonb `data` + `position`; buckets images/newsletters; `supabase/schema.sql`). Chosen automatically by env vars.
+- Auth: `lib/admin/auth.ts`. Password mode (ADMIN_PASSWORD, HMAC cookie, 7 days) or Supabase email/password via @supabase/ssr. `requireAdmin()` in every page and action.
+- Public pages now read from the store via `lib/data/index.ts` (hidden items filtered). Content files remain as seed + non-editable copy. `revalidatePath("/", "layout")` after every save.
+- Route groups: `app/(site)` public with chrome, `app/admin/(auth)` login, `app/admin/(panel)` shell. `proxy.ts` passes the current admin section for sidebar highlight.
+- On Vercel the panel is read-only (banner) until Supabase is connected. Prameet never gives me passwords; he sets ADMIN_PASSWORD himself.
+- Testing: `scratchpad/cdp-flow.mjs` drives headless Chrome through JSON steps (login, fill, click, screenshot, eval). Selector gotcha: the sidebar Sign out button is the first `form button[type=submit]` in DOM order.
+
 ## 5. Open questions for Prameet
 
 1. Which aesthetic (1–4 above, or a mix)? Which palette?

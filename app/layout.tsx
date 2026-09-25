@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Fraunces, Karla, Source_Serif_4 } from "next/font/google";
 import "@/styles/globals.css";
 import { ArchDefs } from "@/components/ui/ArchDefs";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { SocialRail } from "@/components/layout/SocialRail";
 import { site } from "@/content/site";
 
 // Display face: headlines and the wordmark
@@ -47,17 +44,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`no-js ${fraunces.variable} ${sourceSerif.variable} ${karla.variable}`}>
+    <html lang="en" className={`no-js ${fraunces.variable} ${sourceSerif.variable} ${karla.variable}`} suppressHydrationWarning>
       <head>
         {/* lets CSS know JavaScript is running, so scroll-reveal can start hidden */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.remove('no-js')" }} />
       </head>
       <body>
         <ArchDefs />
-        <Header />
-        <SocialRail />
-        <main id="main">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

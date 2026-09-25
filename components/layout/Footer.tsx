@@ -2,7 +2,8 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { site } from "@/content/site";
+import { site as brand } from "@/content/site";
+import { getSiteDetails } from "@/lib/data";
 
 const columns = [
   {
@@ -26,13 +27,14 @@ const columns = [
   },
 ];
 
-export function Footer() {
+export async function Footer() {
+  const site = await getSiteDetails();
   return (
     <footer className="bg-plum-2 pb-8 pt-16 font-sans text-[0.95rem] text-on-plum-2">
       <Container>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div className="flex flex-col gap-4">
-            <Logo tone="dark" tag={site.tagline} />
+            <Logo tone="dark" tag={brand.tagline} />
             <p className="max-w-[36ch]">A registered 501(c)(3) nonprofit. 100% of donations are spent on project expenses.</p>
             <Button href="/support" variant="gold" size="sm" className="self-start">Donate</Button>
           </div>
@@ -42,8 +44,8 @@ export function Footer() {
             <ul className="flex flex-col gap-2.5">
               <li><Link href="/contact" className="text-on-plum no-underline hover:text-gold">{site.email}</Link></li>
               <li><Link href="/contact" className="text-on-plum no-underline hover:text-gold">{site.phone}</Link></li>
-              <li><a href={site.social.facebook} target="_blank" rel="noopener" className="text-on-plum no-underline hover:text-gold">Facebook</a></li>
-              <li>{site.address.street}<br />{site.address.cityStateZip}</li>
+              <li><a href={site.facebook} target="_blank" rel="noopener" className="text-on-plum no-underline hover:text-gold">Facebook</a></li>
+              <li>{site.street}<br />{site.cityStateZip}</li>
             </ul>
           </div>
 
@@ -62,7 +64,7 @@ export function Footer() {
         </div>
 
         <div className="mt-11 flex flex-wrap justify-between gap-3 border-t border-white/10 pt-5 text-[0.85rem]">
-          <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} {brand.name}. All rights reserved.</span>
           <div className="flex flex-wrap gap-4">
             <Link href="/terms" className="text-on-plum no-underline hover:text-gold">Terms &amp; Conditions</Link>
             <Link href="/privacy" className="text-on-plum no-underline hover:text-gold">Privacy Policy</Link>

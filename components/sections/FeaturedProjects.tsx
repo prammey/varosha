@@ -3,10 +3,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { featuredProjects } from "@/content/projects";
+import { getFeaturedProjects } from "@/lib/data";
 
 /** Teal band on the home page with three project cards. */
-export function FeaturedProjects() {
+export async function FeaturedProjects() {
+  const featuredProjects = await getFeaturedProjects();
   return (
     <section className="bg-teal-2 pb-[clamp(60px,8vw,120px)] pt-[clamp(40px,6vw,80px)] text-on-plum">
       <Container className="flex flex-col gap-9">
@@ -16,14 +17,14 @@ export function FeaturedProjects() {
         </Reveal>
 
         <div className="grid gap-[clamp(20px,3vw,36px)] sm:grid-cols-2 lg:grid-cols-3">
-          {featuredProjects.slice(0, 3).map((p, i) => (
+          {featuredProjects.map((p, i) => (
             <Reveal key={p.slug} delay={i as 0 | 1 | 2}>
               <Link
                 href={`/projects#${p.slug}`}
                 className="group flex h-full flex-col overflow-hidden rounded-card bg-white/[0.07] text-on-plum no-underline transition-[transform,translate,rotate,scale,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-card"
               >
                 <div className="relative aspect-[3/2] overflow-hidden">
-                  <Image src={p.image} alt={p.imageAlt} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+                  <Image src={p.image} alt={p.imageAlt} fill unoptimized={p.image.startsWith("http")} sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                 </div>
                 <div className="flex flex-1 flex-col gap-2.5 px-6 pb-[26px] pt-[22px]">
                   <span className="font-sans text-[0.82rem] font-bold uppercase tracking-[0.06em] text-gold">{p.stat}</span>

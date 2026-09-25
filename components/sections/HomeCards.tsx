@@ -4,10 +4,10 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { scholarship } from "@/content/scholarship";
 import { story } from "@/content/about";
-import { newsletters } from "@/content/newsletters";
+import { getNewsletters } from "@/lib/data";
 import { cn } from "@/lib/cn";
 
-const cards = [
+const buildCards = (newsletters: { year: number }[]) => [
   {
     href: "/scholarship",
     tint: "bg-gold-soft",
@@ -31,7 +31,8 @@ const cards = [
 ];
 
 /** The two tinted cards near the bottom of the home page. */
-export function HomeCards() {
+export async function HomeCards() {
+  const cards = buildCards(await getNewsletters());
   return (
     <section className="bg-cream py-[clamp(60px,8vw,120px)]">
       <Container className="grid gap-[clamp(20px,3vw,36px)] md:grid-cols-2">
