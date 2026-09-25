@@ -54,9 +54,16 @@ npm run build
 
 ## Deploy
 
+The GitHub repo is connected to Vercel. Every push to `main` builds and goes live at
+varosha.vercel.app within about a minute; there is no separate deploy step.
+
 ```bash
-vercel deploy --prod
+git add .
+git commit -m "what you changed"
+git push
 ```
+
+To deploy from the terminal without pushing (rarely needed): `vercel deploy --prod`.
 
 Old Wix URLs (`/about-us`, `/services-2`, `/members`, ...) redirect to the new pages; see `next.config.ts`.
 
