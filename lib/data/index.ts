@@ -21,8 +21,9 @@ export async function getPeople() {
   return (await getSiteData()).people.filter((p) => !p.hidden);
 }
 
+/** In the order set in the admin panel; the first one is the featured issue. */
 export async function getNewsletters() {
-  return [...(await getSiteData()).newsletters].sort((a, b) => b.year - a.year);
+  return (await getSiteData()).newsletters;
 }
 
 export async function getEvents() {

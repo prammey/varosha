@@ -62,26 +62,29 @@ export async function logout(): Promise<void> {
 
 /* ---------- shared list operations ---------- */
 
-export async function moveItem(collection: Collection, id: string, direction: "up" | "down"): Promise<void> {
+/** Applies a new order and hidden flags for one list, all at once (from the list page's Save button). */
+export async function saveListState(collection: Collection, entries: { id: string; hidden: boolean }[]): Promise<ActionState> {
   await requireAdmin();
-  const store = await guardWrite();
-  const data = await store.read();
-  const items = [...data[collection]] as { id: string }[];
-  const i = items.findIndex((x) => x.id === id);
-  const j = direction === "up" ? i - 1 : i + 1;
-  if (i < 0 || j < 0 || j >= items.length) return;
-  [items[i], items[j]] = [items[j], items[i]];
-  await store.writeCollection(collection, items as never);
-  refresh();
-}
-
-export async function toggleHidden(collection: Exclude<Collection, "newsletters">, id: string): Promise<void> {
-  await requireAdmin();
-  const store = await guardWrite();
-  const data = await store.read();
-  const items = (data[collection] as { id: string; hidden: boolean }[]).map((x) => (x.id === id ? { ...x, hidden: !x.hidden } : x));
-  await store.writeCollection(collection, items as never);
-  refresh();
+  try {
+    const store = await guardWrite();
+    const data = await store.read();
+    const byId = new Map((data[collection] as { id: string }[]).map((x) => [x.id, x]));
+    const ordered = entries
+      .map((e) => {
+        const item = byId.get(e.id);
+        if (!item) return null;
+        return collection === "newsletters" ? item : { ...item, hidden: e.hidden };
+      })
+      .filter(Boolean);
+    // anything added since the page loaded stays, at the end
+    const seen = new Set(entries.map((e) => e.id));
+    for (const item of byId.values()) if (!seen.has(item.id)) ordered.push(item);
+    await store.writeCollection(collection, ordered as never);
+    refresh();
+    return { ok: true, message: "Saved. The website is updated." };
+  } catch (e) {
+    return fail(e);
+  }
 }
 
 export async function deleteItem(collection: Collection, id: string): Promise<void> {
@@ -173,7 +176,7 @@ export async function saveNewsletter(_prev: ActionState, fd: FormData): Promise<
     const file = await saveUpload(fd, "pdfFile", "pdf", "newsletters");
     if (!file) return { ok: false, message: "Please choose the PDF." };
     const item: Newsletter = { id: `${year}-${Date.now().toString(36)}`, year, file };
-    await store.writeCollection("newsletters", [item, ...data.newsletters].sort((a, b) => b.year - a.year));
+    await store.writeCollection("newsletters", [item, ...data.newsletters]);
     refresh();
     return { ok: true, message: `${year} newsletter added.` };
   } catch (e) {

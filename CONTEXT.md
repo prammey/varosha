@@ -246,6 +246,8 @@ Alt (if Prameet wants cooler/more institutional): swap Vermilion for Teal `#146C
 - On Vercel the panel is read-only (banner) until Supabase is connected. Prameet never gives me passwords; he sets ADMIN_PASSWORD himself.
 - Testing: `scratchpad/cdp-flow.mjs` drives headless Chrome through JSON steps (login, fill, click, screenshot, eval). Selector gotcha: the sidebar Sign out button is the first `form button[type=submit]` in DOM order.
 
+- **Prameet's first admin feedback (2026-09-25):** list changes (order, hide) must not apply instantly → `SortableList` holds them client-side until "Save changes"; forms and lists warn on tab close / in-app navigation when dirty (`useUnsavedChanges`); newsletters are manually ordered (no auto-sort; first = featured). Two `next dev` servers in one repo conflict (dev lock) → test against `next build && next start -p 3222` while his dev server runs on 3000.
+
 ## 5. Open questions for Prameet
 
 1. Which aesthetic (1–4 above, or a mix)? Which palette?
