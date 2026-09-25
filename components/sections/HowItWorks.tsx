@@ -13,13 +13,20 @@ const numberColors = ["text-maroon", "text-gold-2", "text-teal"];
  */
 export function HowItWorks() {
   return (
-    <section className="bg-plum-2 pb-[clamp(60px,8vw,120px)] text-on-plum max-md:pt-7">
-      <Container>
-        <Reveal>
-          {/* desktop: pulled up so its top quarter overlaps the hero; phone: sits fully inside this section */}
-          <StatsBar items={stats} className="md:-translate-y-1/4" />
-        </Reveal>
-      </Container>
+    <section className="bg-plum-2 pb-[clamp(60px,8vw,120px)] text-on-plum">
+      {/*
+        The dark section starts one quarter of the way down the stats bar.
+        Desktop: the bar is translated up 25% over the cream hero.
+        Phone: the bar stays put and the strip behind it is cream for its top quarter,
+        so it never climbs over the hero photo.
+      */}
+      <div className="max-md:bg-[linear-gradient(to_bottom,var(--color-cream)_25%,var(--color-plum-2)_25%)]">
+        <Container>
+          <Reveal>
+            <StatsBar items={stats} className="md:-translate-y-1/4" />
+          </Reveal>
+        </Container>
+      </div>
 
       <Container className="mt-[clamp(20px,4vw,48px)] flex flex-col gap-11">
         <Reveal className="mx-auto flex max-w-[60ch] flex-col gap-2.5 text-center">
