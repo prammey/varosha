@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 import { site } from "@/content/site";
@@ -11,8 +12,7 @@ export function Logo({ tone = "light", tag = `Since ${site.foundedYear} · ${sit
   return (
     <Link href="/" aria-label="Varosha home" className={cn("group flex items-center gap-3.5 no-underline", dark ? "text-on-plum" : "text-ink", className)}>
       <span className="block h-[50px] w-[50px] flex-none overflow-hidden rounded-xl shadow-[0_4px_12px_-4px_rgba(0,0,0,.35)] transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
-        {/* plain <img>: the logo is a small SVG and needs no optimization */}
-        <img src="/brand/logo.svg" alt="" width={50} height={50} className="block h-full w-full" />
+        <Image src="/brand/logo.svg" alt="" width={50} height={50} className="block h-full w-full" />
       </span>
       <span className="flex flex-col">
         <span className="display text-[1.75rem] font-medium leading-none" style={{ fontVariationSettings: '"SOFT" 80, "WONK" 1' }}>

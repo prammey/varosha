@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
+import { useEffect, useRef, type ElementType, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 type Props = {
@@ -13,24 +13,24 @@ type Props = {
 
 /**
  * Fades and lifts its children in the first time they scroll into view.
- * Falls back to visible if IntersectionObserver is unavailable.
+ * Adds the "in" class straight to the element, so there is no re-render.
+ * Shows immediately if IntersectionObserver is unavailable.
  */
 export function Reveal({ children, delay = 0, className, as: Tag = "div" }: Props) {
   const ref = useRef<HTMLElement | null>(null);
-  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     if (!("IntersectionObserver" in window)) {
-      setInView(true);
+      el.classList.add("in");
       return;
     }
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            setInView(true);
+            el.classList.add("in");
             io.disconnect();
           }
         }
@@ -42,7 +42,7 @@ export function Reveal({ children, delay = 0, className, as: Tag = "div" }: Prop
   }, []);
 
   return (
-    <Tag ref={ref} className={cn("rv", delay > 0 && `d${delay}`, inView && "in", className)}>
+    <Tag ref={ref} className={cn("rv", delay > 0 && `d${delay}`, className)}>
       {children}
     </Tag>
   );

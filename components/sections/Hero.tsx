@@ -47,7 +47,7 @@ function Stamp() {
   return (
     <div
       aria-hidden="true"
-      className="absolute bottom-14 z-[3] grid h-[120px] w-[120px] place-items-center rounded-full bg-gold text-plum-2 shadow-card max-md:-bottom-8 max-md:right-2 max-md:h-[100px] max-md:w-[100px] md:-left-2"
+      className="absolute z-[3] grid place-items-center rounded-full bg-gold text-plum-2 shadow-card max-md:bottom-3 max-md:right-3 max-md:h-[96px] max-md:w-[96px] md:-left-2 md:bottom-14 md:h-[120px] md:w-[120px]"
     >
       <svg viewBox="0 0 120 120" className="h-full w-full animate-[spin_24s_linear_infinite]">
         <defs>

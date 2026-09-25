@@ -5,11 +5,11 @@ import type { ReactNode } from "react";
 type Variant = "maroon" | "gold" | "outline" | "outlineLight";
 
 const base =
-  "inline-flex items-center gap-2 rounded-full border-2 border-transparent font-sans font-bold whitespace-nowrap transition-[transform,box-shadow,background-color,color] duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-10px_rgba(42,30,34,.45)] active:translate-y-0";
+  "inline-flex items-center gap-2 rounded-full border-2 font-sans font-bold whitespace-nowrap transition-[transform,box-shadow,background-color,color] duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-10px_rgba(42,30,34,.45)] active:translate-y-0";
 
 const variants: Record<Variant, string> = {
-  maroon: "bg-maroon text-white hover:bg-maroon-2",
-  gold: "bg-gold text-plum-2 hover:bg-[#f0b84f]",
+  maroon: "border-maroon bg-maroon text-white hover:border-maroon-2 hover:bg-maroon-2",
+  gold: "border-gold bg-gold text-plum-2 hover:border-[#f0b84f] hover:bg-[#f0b84f]",
   outline: "border-ink text-ink hover:bg-ink hover:text-cream",
   outlineLight: "border-white/50 text-on-plum hover:bg-on-plum hover:text-plum",
 };

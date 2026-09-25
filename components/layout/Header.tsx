@@ -41,12 +41,14 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // close menus on navigation
-  useEffect(() => {
+  // close menus when the route changes (React's "adjust state during render" pattern)
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setMenuOpen(false);
     setAboutOpen(false);
     setHidden(false);
-  }, [pathname]);
+  }
 
   // close the dropdown on outside click or Escape
   useEffect(() => {
