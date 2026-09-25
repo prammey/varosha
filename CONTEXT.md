@@ -226,6 +226,16 @@ Alt (if Prameet wants cooler/more institutional): swap Vermilion for Teal `#146C
 
 **v3 (2026-09-25) — Prameet's second review, all approved or applied:** Home: stats bar straddles hero/next section (3/4 overlap), "How it works" on plum-2, projects band on teal-2, step cards dip uniformly on hover. Projects: modal fixed height (560px / 84vh), scrollable text column, plain black × close. Nav: About is a hover dropdown (Our Story `#about`, Our Team `#people`, Newsletters `#newsletters`); clicking About goes nowhere; Support tab removed, Donate block → `#support`. New Newsletters page (featured 2022 + year grid). Pages Prameet called perfect: Scholarship, People, Contact ("my favorite"). Events, Support, About: fine.
 
+## 4d. Build (2026-09-25)
+
+- Stack: Next.js 16.3, React 19.3, TypeScript 5.9, Tailwind 4.3, ESLint 9 (`eslint-config-next`). No CMS. Static pages.
+- Fonts via `next/font/google`: Fraunces (opsz/SOFT/WONK axes), Source Serif 4, Karla.
+- Content layer in `content/*.ts`; images renamed into `public/images/<section>/`; PDFs in `public/newsletters/`; logo `public/brand/logo.svg` (also `app/icon.svg`).
+- Old Wix URLs redirect (next.config.ts). Sitemap + robots generated.
+- Verification method that works here: `npx next build && npx next start`, then headless Chrome screenshots; for phone width use the CDP helper (`scratchpad/cdp.mjs`, uses `Emulation.setDeviceMetricsOverride`) because headless Chrome's window can't go below 500px wide.
+- Vercel: project **varosha** under Prameet's account (prameetguha), production alias **https://varosha.vercel.app**. Deployed with `vercel deploy --prod --yes`. Repo: github.com/prammey/varosha (main).
+- Prameet's build rules: intuitive image names, very organized folders, TS/TSX, commit + push as you go, don't need him during the build.
+
 ## 5. Open questions for Prameet
 
 1. Which aesthetic (1–4 above, or a mix)? Which palette?

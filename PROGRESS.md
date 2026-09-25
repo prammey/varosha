@@ -11,17 +11,20 @@
 ## In progress
 - [x] 2026-09-25 — v1 reviewed by Prameet; v2 built to the feedback (maroon/gold/plum palette, Fraunces, animations, social rail, dark Projects/Scholarship, business-card Contact)
 - [x] 2026-09-25 — v2 reviewed ("super impressed"); v3 applied: straddling stats bar, dark How-it-works, teal projects band, modal redesign, About dropdown (Our Story / Our Team / Newsletters), Support tab removed (Donate → support page), new Newsletters page
-- [ ] Prameet reviews v3; iterate until approved
+- [x] 2026-09-25 — v3 approved by Prameet (two small fixes: dropdown stuck open, support-page overlap)
+- [x] 2026-09-25 — Built the real site: Next.js 16 + TypeScript + Tailwind 4, typed content layer, 12 pages, redirects, sitemap; lint/types/build clean; phone-width verified
+- [x] 2026-09-25 — Deployed to https://varosha.vercel.app (Vercel project "varosha", CLI deploy from Prameet's account)
 - [x] 2026-09-25 — Palette decided: Option A "Lamplight" (copper/paper/night)
 
 ## Next
-- [ ] Confirm tech stack and get approval to scaffold Next.js + Tailwind
-- [ ] Resolve content questions listed in `CONTEXT.md` → "Open questions"
-- [ ] Download and organize all site images + newsletter PDFs into `/public`
-- [ ] Build design system (type scale, colors, spacing, components)
-- [ ] Build pages: Home, About, Projects, Scholarship, Members, Support, Contact, Events, legal pages
-- [ ] Mobile QA, accessibility check (WCAG AA), Lighthouse pass
-- [ ] Deploy to Vercel (needs approval), then point varosha.org DNS
+- [ ] Prameet reviews the live site on desktop and phone
+- [ ] Real URLs for X / YouTube / Instagram (or drop those icons) → `content/site.ts`
+- [ ] Board to review the three legal pages (marked "Draft for board review")
+- [ ] Update scholarship deadline when the next cycle opens → `content/scholarship.ts`
+- [ ] Higher-resolution originals of photos, if they exist (Wix served ~1200px)
+- [ ] Connect the GitHub repo to Vercel for automatic deploys (optional)
+- [ ] Point varosha.org DNS at Vercel when ready; old Wix URLs already redirect
+- [ ] Lighthouse / accessibility pass on the live site
 
 - [x] 2026-09-25 — Chrome extension connected; screenshotted rendered layout of all main pages, found the diya logo (notes in `CONTEXT.md` §3)
 
