@@ -27,14 +27,17 @@ export default async function AdminNewsletters() {
         items={newsletters.map((n) => ({ id: n.id, title: String(n.year), extra: { href: n.file, label: "Open PDF ↗" } }))}
         emptyText="No newsletters yet. Add the first one above."
       />
-      <ul className="mt-6 flex flex-col gap-1">
-        {newsletters.map((n) => (
-          <li key={n.id} className="flex items-center justify-between px-2 text-[0.85rem] text-mute">
-            <span>{n.year}</span>
-            <DeleteButton action={deleteItem.bind(null, "newsletters", n.id)} what={`${n.year} newsletter`} />
-          </li>
-        ))}
-      </ul>
+      <details className="mt-8 rounded-xl bg-white px-4 py-3 text-[0.9rem] shadow-[0_1px_2px_rgba(42,30,34,.05)]">
+        <summary className="cursor-pointer font-semibold text-mute hover:text-ink">Need to remove a year?</summary>
+        <ul className="mt-3 flex flex-col gap-2 border-t border-line pt-3">
+          {newsletters.map((n) => (
+            <li key={n.id} className="flex items-center justify-between gap-3">
+              <span className="font-semibold">{n.year}</span>
+              <DeleteButton action={deleteItem.bind(null, "newsletters", n.id)} what={`${n.year} newsletter`} />
+            </li>
+          ))}
+        </ul>
+      </details>
     </>
   );
 }
