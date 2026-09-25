@@ -29,7 +29,7 @@ export default function NewslettersPage() {
             href={latestNewsletter.file}
             target="_blank"
             rel="noopener"
-            className="grid overflow-hidden rounded-card bg-plum-3 text-on-plum no-underline transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_30px_50px_-24px_rgba(0,0,0,.6)] md:grid-cols-[1fr_1.4fr]"
+            className="grid overflow-hidden rounded-card bg-plum-3 text-on-plum no-underline transition-[transform,translate,rotate,scale,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_30px_50px_-24px_rgba(0,0,0,.6)] md:grid-cols-[1fr_1.4fr]"
           >
             <div className="relative min-h-[280px]">
               <Image src={story.image} alt="" fill sizes="(max-width: 760px) 100vw, 40vw" className="object-cover" />

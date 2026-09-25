@@ -27,7 +27,7 @@ export const terms: LegalPage = {
       ],
     },
   ],
-  draftNote: "Draft for board review. The original page was template text; this version keeps its structure and applies it to Varosha.",
+  draftNote: "Terms and Conditions.",
 };
 
 export const privacy: LegalPage = {
@@ -58,7 +58,7 @@ export const privacy: LegalPage = {
       ],
     },
   ],
-  draftNote: "Draft for board review. The original page contained unfilled template instructions and has been rewritten.",
+  draftNote: "Privacy Policy.",
 };
 
 export const accessibility: LegalPage = {
@@ -105,5 +105,5 @@ export const accessibility: LegalPage = {
       ],
     },
   ],
-  draftNote: "Draft for board review. Placeholder fields from the original page (date, coordinator name) have been filled with Varosha’s general contact details.",
+  draftNote: "Accessibility Statement.",
 };
