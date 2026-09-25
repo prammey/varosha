@@ -1,0 +1,28 @@
+{
+  "name": "varosha",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website for Varosha, a 501(c)(3) nonprofit funding skills training and micro-loans in West Bengal, India.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^16.3.6",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.20.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.6",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/*
+  Design tokens. Every color and font on the site comes from here.
+  Change a value once and it changes everywhere.
+*/
+@theme {
+  /* light surfaces */
+  --color-cream: #fbf4e8;
+  --color-cream-2: #f5e9d6;
+  --color-sand: #eadfc9;
+
+  /* text on light surfaces */
+  --color-ink: #2a1e22;
+  --color-ink-2: #5a4a50;
+  --color-mute: #8c7a80;
+  --color-line: #e6d9c8;
+
+  /* brand */
+  --color-maroon: #93304a;
+  --color-maroon-2: #742239;
+  --color-maroon-3: #5a1a2b;
+  --color-rose: #f6dee3;
+  --color-rose-2: #efc9d1;
+  --color-gold: #e3a63a;
+  --color-gold-2: #c98c22;
+  --color-gold-soft: #fbebc8;
+  --color-teal: #22696f;
+  --color-teal-2: #173f45;
+  --color-teal-soft: #d8ecec;
+
+  /* dark surfaces + text on them */
+  --color-plum: #2b1b27;
+  --color-plum-2: #1e1219;
+  --color-plum-3: #3a2636;
+  --color-on-plum: #f7ede2;
+  --color-on-plum-2: #cdbcc4;
+
+  /* type: set by next/font in app/layout.tsx via CSS variables */
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-serif: var(--font-source-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-karla), "Helvetica Neue", Arial, sans-serif;
+
+  --radius-card: 22px;
+  --radius-card-sm: 14px;
+  --shadow-card: 0 2px 6px rgba(42, 30, 34, 0.06), 0 24px 48px -20px rgba(42, 30, 34, 0.28);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  font-variation-settings: "SOFT" 70, "WONK" 1;
+}
+h3 { font-variation-settings: "SOFT" 40, "WONK" 0; }
+
+:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---- reusable pieces that are easier as plain CSS than as utility strings ---- */
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.lede {
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* Indian cusped-arch image mask (the "gate"). Defined in components/ui/ArchDefs.tsx */
+.arch { clip-path: url(#arch); }
+.arch-sm { clip-path: url(#arch-sm); }
+
+/* load-in animations for page headers */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes arch-in {
+  from { opacity: 0; transform: translateY(30px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.a1 { animation: rise 0.7s 0.05s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.a2 { animation: rise 0.7s 0.18s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.a3 { animation: rise 0.7s 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.a4 { animation: arch-in 0.9s 0.15s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+/* scroll reveal: components/ui/Reveal.tsx adds .in when the element scrolls into view */
+.rv {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.rv.in { opacity: 1; transform: none; }
+.rv.d1 { transition-delay: 0.1s; }
+.rv.d2 { transition-delay: 0.2s; }
+.rv.d3 { transition-delay: 0.3s; }
+/* no JavaScript: show everything */
+html.no-js .rv { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .rv { opacity: 1; transform: none; }
+}
+
+/* the native <dialog> used for project stories */
+dialog::backdrop {
+  background: rgba(30, 18, 25, 0.75);
+  backdrop-filter: blur(6px);
+}
