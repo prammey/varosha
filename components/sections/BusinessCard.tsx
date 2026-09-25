@@ -6,7 +6,7 @@ import { site } from "@/content/site";
 /** The tilted business card in the middle of the Contact page. */
 export function BusinessCard() {
   return (
-    <div className="relative z-[1] mx-auto grid max-w-[760px] -rotate-[1.2deg] overflow-hidden rounded-card bg-cream shadow-[0_40px_80px_-30px_rgba(0,0,0,.7)] transition-transform duration-300 hover:rotate-0 sm:grid-cols-[1fr_1.4fr]">
+    <div className="relative z-[1] mx-auto grid max-w-[760px] overflow-hidden rounded-card bg-cream shadow-[0_40px_80px_-30px_rgba(0,0,0,.7)] transition-transform duration-300 sm:grid-cols-[1fr_1.4fr] md:-rotate-[1.2deg] md:hover:rotate-0">
       <div className="relative flex flex-col items-start justify-center gap-4 overflow-hidden bg-maroon px-[30px] py-9 text-on-plum after:absolute after:-bottom-[60px] after:-right-[60px] after:h-[180px] after:w-[180px] after:rounded-full after:bg-gold after:opacity-25">
         <span className="block h-[72px] w-[72px] overflow-hidden rounded-[14px] shadow-[0_8px_20px_-8px_rgba(0,0,0,.6)]">
           <Image src="/brand/logo.svg" alt="" width={72} height={72} className="block h-full w-full" />

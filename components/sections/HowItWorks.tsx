@@ -13,10 +13,11 @@ const numberColors = ["text-maroon", "text-gold-2", "text-teal"];
  */
 export function HowItWorks() {
   return (
-    <section className="bg-plum-2 pb-[clamp(60px,8vw,120px)] text-on-plum">
+    <section className="bg-plum-2 pb-[clamp(60px,8vw,120px)] text-on-plum max-md:pt-7">
       <Container>
         <Reveal>
-          <StatsBar items={stats} className="-translate-y-1/4" />
+          {/* desktop: pulled up so its top quarter overlaps the hero; phone: sits fully inside this section */}
+          <StatsBar items={stats} className="md:-translate-y-1/4" />
         </Reveal>
       </Container>
 
