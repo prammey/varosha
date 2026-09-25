@@ -31,10 +31,10 @@ export function HowItWorks() {
 
         <div className="grid gap-[22px] md:grid-cols-3">
           {howItWorks.map((step, i) => (
-            <Reveal key={step.title} delay={i as 0 | 1 | 2}>
+            <Reveal key={step.title} delay={i as 0 | 1 | 2} className="h-full">
               <div
                 className={cn(
-                  "group flex flex-col gap-3 rounded-card px-[30px] pb-9 pt-[34px] text-ink transition-transform duration-300",
+                  "group flex h-full flex-col gap-3 rounded-card px-[30px] pb-9 pt-[34px] text-ink transition-transform duration-300",
                   tints[i],
                   // the middle card sits lower; all three dip further on hover
                   i === 1 ? "md:translate-y-[22px] md:hover:translate-y-[30px] md:hover:rotate-[0.4deg]" : "hover:translate-y-2 hover:-rotate-[0.4deg]",
