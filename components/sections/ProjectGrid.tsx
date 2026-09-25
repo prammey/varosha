@@ -68,7 +68,7 @@ export function ProjectGrid() {
               type="button"
               id={p.slug}
               onClick={() => setOpen(p)}
-              className="group flex h-full w-full flex-col overflow-hidden rounded-card bg-plum-3 text-left text-on-plum transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_50px_-24px_rgba(0,0,0,.6)]"
+              className="group flex h-full w-full flex-col overflow-hidden rounded-card bg-plum-3 text-left text-on-plum transition-[transform,translate,rotate,scale,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_50px_-24px_rgba(0,0,0,.6)]"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image src={p.image} alt="" fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" />

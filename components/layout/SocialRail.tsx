@@ -46,16 +46,17 @@ export function SocialRail() {
             target={external ? "_blank" : undefined}
             rel={external ? "noopener" : undefined}
             className={cn(
-              "flex h-11 items-center gap-2.5 bg-plum font-sans text-[0.85rem] font-bold text-on-plum no-underline shadow-[0_8px_20px_-10px_rgba(0,0,0,.5)] transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(.2,.7,.2,1)]",
+              "group flex h-11 items-center gap-2.5 bg-plum font-sans text-[0.85rem] font-bold text-on-plum no-underline shadow-[0_8px_20px_-10px_rgba(0,0,0,.5)] transition-[translate,background-color,color] duration-300 ease-[cubic-bezier(.2,.7,.2,1)]",
               "max-md:w-11 max-md:justify-center max-md:rounded-full",
-              "md:translate-x-[calc(100%-44px)] md:rounded-l-full md:pl-3 md:pr-3.5 md:hover:translate-x-0 md:focus-visible:translate-x-0",
+              // tucked in so only the icon shows; slides fully out on hover
+              "md:translate-x-[calc(100%-40px)] md:rounded-l-full md:pl-2.5 md:pr-4 md:hover:translate-x-0 md:focus-visible:translate-x-0",
               it.hover,
             )}
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5 flex-none fill-current" aria-hidden="true">
               <path d={it.path} />
             </svg>
-            <span className="whitespace-nowrap max-md:sr-only">{it.label}</span>
+            <span className="whitespace-nowrap opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 max-md:sr-only">{it.label}</span>
           </a>
         );
       })}

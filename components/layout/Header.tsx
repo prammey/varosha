@@ -79,7 +79,7 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 border-b border-line bg-cream/90 backdrop-blur-[14px] transition-[transform,box-shadow] duration-300",
+          "fixed inset-x-0 top-0 z-50 border-b border-line bg-cream/90 backdrop-blur-[14px] transition-[transform,translate,rotate,scale,box-shadow] duration-300",
           hidden && "-translate-y-[110%]",
           scrolled && "shadow-[0_8px_30px_-18px_rgba(42,30,34,.35)]",
         )}

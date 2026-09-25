@@ -39,7 +39,7 @@ export function HomeCards() {
           <Reveal key={c.href} delay={i as 0 | 1}>
             <Link
               href={c.href}
-              className={cn("group flex h-full flex-col overflow-hidden rounded-card text-ink no-underline transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-card", c.tint)}
+              className={cn("group flex h-full flex-col overflow-hidden rounded-card text-ink no-underline transition-[transform,translate,rotate,scale,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-card", c.tint)}
             >
               <div className="relative aspect-[3/2] overflow-hidden">
                 <Image src={c.image} alt={c.alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />

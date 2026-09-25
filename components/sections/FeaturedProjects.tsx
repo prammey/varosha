@@ -20,7 +20,7 @@ export function FeaturedProjects() {
             <Reveal key={p.slug} delay={i as 0 | 1 | 2}>
               <Link
                 href={`/projects#${p.slug}`}
-                className="group flex h-full flex-col overflow-hidden rounded-card bg-white/[0.07] text-on-plum no-underline transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-card"
+                className="group flex h-full flex-col overflow-hidden rounded-card bg-white/[0.07] text-on-plum no-underline transition-[transform,translate,rotate,scale,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-card"
               >
                 <div className="relative aspect-[3/2] overflow-hidden">
                   <Image src={p.image} alt={p.imageAlt} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
