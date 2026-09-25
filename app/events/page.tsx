@@ -55,7 +55,7 @@ export default function EventsPage() {
           <div className="grid gap-[clamp(20px,3vw,36px)] md:grid-cols-2">
             {past.map((e, i) => (
               <Reveal key={e.date + e.title} delay={(i % 2) as 0 | 1}>
-                <article className="group flex h-full flex-col overflow-hidden rounded-card bg-white transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-card">
+                <article className="group flex h-full flex-col overflow-hidden rounded-card bg-white transition-[transform,translate,rotate,scale,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-card">
                   <div className="relative aspect-[3/2] overflow-hidden">
                     <Image src={e.image!} alt={e.imageAlt ?? ""} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                   </div>
