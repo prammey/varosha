@@ -103,8 +103,8 @@ export function Header() {
               aria-label="Primary"
               className={cn(
                 "items-center gap-0.5",
-                // desktop
-                "lg:flex",
+                // desktop; right margin makes the gap before Donate match the gap between links
+                "lg:mr-3.5 lg:flex",
                 // phone: dropdown panel under the header
                 "max-lg:absolute max-lg:inset-x-0 max-lg:top-full max-lg:flex-col max-lg:items-stretch max-lg:border-b max-lg:border-line max-lg:bg-cream max-lg:px-[clamp(16px,4vw,40px)] max-lg:pb-5 max-lg:pt-3 max-lg:shadow-card",
                 menuOpen ? "max-lg:flex" : "max-lg:hidden",
