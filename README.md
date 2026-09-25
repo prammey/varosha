@@ -30,7 +30,6 @@ public/
   newsletters/varosha-newsletter-YYYY.pdf
   brand/logo.svg
 styles/globals.css   colors, fonts and the few shared CSS rules (design tokens at the top)
-mockup/         the approved HTML mock-up the site was built from (reference only)
 ```
 
 ## Common edits

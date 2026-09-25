@@ -200,7 +200,7 @@ Alt (if Prameet wants cooler/more institutional): swap Vermilion for Teal `#146C
 - **Home structure:** hero → trust strip (2004 / 100% / 11 / 0%) → How it works (Train → Lend → Thrive) → 3 featured projects → quote band → Scholarship + Newsletters cards → CTA.
 - **Copy rule:** all original sentences kept verbatim or lightly rearranged; new connective copy only where needed. Legal pages rewritten from Wix placeholders and marked "Draft for board review".
 - **Known stale content carried over on purpose (needs Prameet's call):** scholarship deadline March 15, 2026; Decibel concert Sept 13, 2025 on Events page.
-- **Files:** `mockup/varosha-mockup.html` (single self-contained page, hash-routed) + `mockup/img/*.jpg` (22 photos, 4 MB, downloaded from Wix at 1200px). Published privately: https://claude.ai/artifact/5NFRxTi8UAysYMNvMtWggW
+- **Files:** the mock-up (`mockup/varosha-mockup.html` + 22 photos) was deleted from the repo on 2026-09-25 after the real site shipped; it remains in git history (commits up to 1d6e196). The claude.ai artifact was also deleted.
 
 ## 4c. Mock-up v2 (2026-09-25) — after Prameet's first review
 
