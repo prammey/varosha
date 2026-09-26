@@ -11,7 +11,7 @@ export function Logo({ tone = "light", tag = `Since ${site.foundedYear} · ${sit
   const dark = tone === "dark";
   return (
     <Link href="/" aria-label="Varosha home" className={cn("group flex items-center gap-3.5 no-underline", dark ? "text-on-plum" : "text-ink", className)}>
-      <span className="block h-[50px] w-[50px] flex-none overflow-hidden rounded-lg shadow-[0_4px_12px_-4px_rgba(0,0,0,.35)] transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
+      <span className="block h-[50px] w-[50px] flex-none overflow-hidden shadow-[0_4px_12px_-4px_rgba(0,0,0,.35)] transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
         <Image src="/brand/logo.svg" alt="" width={50} height={50} className="block h-full w-full" />
       </span>
       <span className="flex flex-col">
