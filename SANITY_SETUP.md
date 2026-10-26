@@ -1,3 +1,23 @@
+# Hosted release configuration — October 25, 2026
+
+Prameet explicitly approved the production deployment and privately saving the
+existing Sanity token, admin password and session secret in Vercel. Both Vercel
+environments are configured: preview uses `varosha-test`, production uses
+`production`. A published Vercel firewall rule limits POST `/admin/login` to 20
+requests per IP per 10 minutes. The older per-process-only limitation below is
+historical; individual accounts/MFA are still not implemented.
+
+Fraunces remains the display font. Both homepage heroes include the marker
+animation and fixed-frame 10px photo adjustment. The main heading is smaller and
+the alternate introduction is slightly larger. No font picker or preview font
+assets are included in the deployment.
+
+The GitHub/Vercel production connection is confirmed. Local build, lint,
+TypeScript, 17 simulated tests and real Sanity persistence tests passed. The
+protected hosted preview exercises the same publishing and upload workflow on
+`varosha-test`; production status should be checked against the release commit.
+Secrets remain server-only. Never copy `.env.local` into Git or deployment notes.
+
 # Varosha publishing setup
 
 The existing `/admin` stays the editor. Sanity is storage behind it, not another
