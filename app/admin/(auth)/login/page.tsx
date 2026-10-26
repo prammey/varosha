@@ -23,7 +23,7 @@ export default async function LoginPage() {
           <LoginForm />
         ) : (
           <p className="text-[0.95rem] leading-relaxed text-ink-2">
-            Admin login needs to be configured by the website developer. Production requires a password of at least 16 characters and a separate session secret of at least 32 characters.
+            Admin login needs to be configured by the website developer. Production requires a password of at least 8 characters and a separate session secret of at least 32 characters.
           </p>
         )}
       </div>

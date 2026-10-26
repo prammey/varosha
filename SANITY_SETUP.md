@@ -52,7 +52,7 @@ production release gates below remain before a public handoff.
    separate from the paid Editor user role. Keep the token private.
 5. Enter the project ID, test dataset name and token **in `.env.local` on your
    computer**, never in chat. Codex can open that file without displaying its
-   contents. Also set a new admin password (at least 16 characters) and a separate
+   contents. Also set a new admin password (at least 8 characters) and a separate
    random session secret (at least 32 characters). Do not reuse the old demo password.
 6. Use `CONTENT_STORAGE=sanity` and `SANITY_DATASET=varosha-test` locally. All Sanity
    requests happen on the server; no browser CORS origin or Studio deployment is
@@ -84,7 +84,7 @@ publication. An old tab is rejected with instructions to copy edits and reload.
 A successful save updates that form's revision so repeat saves work.
 
 Only authenticated server actions publish/delete/upload. Sanity tokens are never
-returned to clients. Production login fails closed with weak/missing credentials;
+returned to clients. Production login fails closed with missing/invalid credentials;
 cookies are signed, HttpOnly, Secure in production, SameSite=Lax, and expire after
 seven days. Changing either password or session secret invalidates old sessions.
 Next's same-origin Server Action checks are retained.

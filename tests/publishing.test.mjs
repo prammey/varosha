@@ -102,10 +102,14 @@ test('every content action rejects missing or forged sessions before accessing s
   }
   assert.equal(calls.length,0);
 });
-test('production password strength, session tampering, expiry and credential rotation',()=>{
+test('production password configuration, session tampering, expiry and credential rotation',()=>{
   const env={...process.env,NODE_ENV:'production'};
   assert.equal(passwordConfigured(env),true);
   assert.equal(passwordConfigured({...env,ADMIN_PASSWORD:'short'}),false);
+  const shortEnv={...env,ADMIN_PASSWORD:'testpass'};
+  assert.equal(passwordConfigured(shortEnv),true);
+  assert.equal(passwordMatches('testpass',shortEnv),true);
+  assert.equal(validSession(sessionValue(1000000000000,shortEnv),1000000000000,shortEnv),true);
   assert.equal(passwordConfigured({...env,ADMIN_SESSION_SECRET:''}),false);
   assert.equal(passwordMatches(env.ADMIN_PASSWORD,env),true);
   const now=Date.now(),token=sessionValue(now,env);

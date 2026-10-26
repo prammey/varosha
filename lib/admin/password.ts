@@ -4,7 +4,7 @@ export function passwordConfigured(env = process.env): boolean {
   const password = env.ADMIN_PASSWORD ?? "";
   const secret = env.ADMIN_SESSION_SECRET ?? "";
   if (!password) return false;
-  return env.NODE_ENV !== "production" || (password.length >= 16 && secret.length >= 32 && secret !== password);
+  return env.NODE_ENV !== "production" || (password.length >= 8 && secret.length >= 32 && secret !== password);
 }
 function sessionKey(env = process.env) {
   const passwordHash = createHash("sha256").update(env.ADMIN_PASSWORD ?? "").digest("hex");
