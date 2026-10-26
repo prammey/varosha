@@ -1,14 +1,13 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { authMode, getSession, passwordIsConfigured } from "@/lib/admin/auth";
+import { getSession, passwordIsConfigured } from "@/lib/admin/auth";
 import { LoginForm } from "./LoginForm";
 
 export const metadata = { title: "Sign in · Varosha admin", robots: { index: false } };
 
 export default async function LoginPage() {
   if (await getSession()) redirect("/admin");
-  const mode = authMode();
-  const configured = mode === "supabase" || passwordIsConfigured();
+  const configured = passwordIsConfigured();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#f7f2ea] px-4 font-sans text-ink">
@@ -21,10 +20,10 @@ export default async function LoginPage() {
           </div>
         </div>
         {configured ? (
-          <LoginForm mode={mode} />
+          <LoginForm />
         ) : (
           <p className="text-[0.95rem] leading-relaxed text-ink-2">
-            No admin password is set yet. Create a file called <code className="rounded bg-cream-2 px-1">.env.local</code> in the project folder with a line like <code className="rounded bg-cream-2 px-1">ADMIN_PASSWORD=choose-something</code>, then restart the site.
+            Admin login needs to be configured by the website developer. Production requires a password of at least 16 characters and a separate session secret of at least 32 characters.
           </p>
         )}
       </div>

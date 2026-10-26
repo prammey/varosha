@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { HeroHeadlineText, HeroPhotoImage } from "./HeroShared";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { site } from "@/content/site";
@@ -10,8 +10,8 @@ export function Hero() {
       <Container className="grid items-center gap-[clamp(28px,5vw,56px)] pb-[clamp(36px,4vw,56px)] md:grid-cols-[1.05fr_0.95fr]">
         <div className="relative z-[2] flex flex-col gap-[22px]">
           <span className="eyebrow a1 text-maroon">A 501(c)(3) nonprofit · Kolkata &amp; West Bengal</span>
-          <h1 className="a2 text-[clamp(2.6rem,6vw,4.8rem)]">
-            Hope and empowerment through <em className="text-maroon">education</em> and <em className="text-maroon">opportunity</em>.
+          <h1 className="a2 text-[clamp(2.3rem,4.8vw,4rem)]">
+            <HeroHeadlineText />
           </h1>
           <p className="lede a3 text-ink-2">
             Since {site.founded}, Varosha has funded skills training for women and young people in West Bengal, then backed each graduate with an interest-free loan to start a business of their own.
@@ -26,14 +26,7 @@ export function Hero() {
           {/* the tilted maroon block behind the photo */}
           <span aria-hidden="true" className="absolute right-0 top-0 z-0 h-[84%] w-[78%] rotate-2 rounded-card bg-maroon" />
           <div className="arch relative z-[1] aspect-[4/4.5] w-full overflow-hidden">
-            <Image
-              src="/images/hero/tailoring-graduates.jpg"
-              alt="Six young women in a classroom smiling and holding up garments they tailored themselves"
-              fill
-              priority
-              sizes="(max-width: 900px) 100vw, 45vw"
-              className="object-cover object-[center_30%]"
-            />
+            <HeroPhotoImage sizes="(max-width: 900px) 100vw, 45vw" positionY="30%" />
           </div>
           <Stamp />
         </figure>

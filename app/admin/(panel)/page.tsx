@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { adminSections } from "@/components/admin/AdminShell";
-import { loadStartingContent } from "@/app/admin/actions";
 import { getSiteData } from "@/lib/data";
 import { getStore } from "@/lib/data/store";
 
@@ -15,21 +14,13 @@ export default async function AdminHome() {
     "/admin/scholarship": data.scholarship.deadline ? "Deadline set" : "No deadline",
     "/admin/site": data.site.email || "Not set",
   };
-  const empty = data.projects.length === 0 && data.people.length === 0;
 
   return (
     <>
       <div className="mb-8">
         <h1 className="display text-[2rem] leading-none">What would you like to update?</h1>
-        <p className="mt-2 text-[0.95rem] text-mute">Changes appear on the website as soon as you save.</p>
+        <p className="mt-2 text-[0.95rem] text-mute">Changes appear on the website after you click Publish changes.</p>
       </div>
-
-      {empty && (
-        <form action={loadStartingContent} className="mb-6 rounded-2xl bg-gold-soft p-5">
-          <p className="mb-3 text-[0.95rem] text-plum-2">This is empty. Load the original website’s projects, team, newsletters and events to start from?</p>
-          <button type="submit" className="rounded-full bg-maroon px-5 py-2 font-bold text-white hover:bg-maroon-2">Load starting content</button>
-        </form>
-      )}
 
       <div className="grid gap-4 sm:grid-cols-2">
         {adminSections.map((s) => (

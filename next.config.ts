@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // stop next dev from writing AGENTS.md / CLAUDE.md into the repo
   agentRules: false,
+  experimental: { serverActions: { bodySizeLimit: "4mb" } },
+  images: { remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io", pathname: "/images/**" }] },
   // Old Wix URLs keep working once varosha.org points here.
   async redirects() {
     return [

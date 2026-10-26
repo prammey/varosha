@@ -4,28 +4,23 @@ The website of **Varosha**, a registered 501(c)(3) nonprofit in Palatine, Illino
 funds skills training and interest-free micro-loans for women and young people in West
 Bengal, India. Live at **https://varosha.vercel.app** (varosha.org to follow).
 
-Built with Next.js 16, React 19, TypeScript and Tailwind CSS 4. Every page is static.
+Built with Next.js 16, React 19, TypeScript and Tailwind CSS 4. Public pages read published content on each request.
 
 ## Admin panel
 
 Board members can edit the site at **/admin** without touching code: projects, team members
 (with photos and bios), newsletters, events, the scholarship deadline, and contact details.
 
-**Demo / local mode (now).** Edits are saved to `data/site-data.json` and uploads to
-`public/uploads/`. Both are committed, so `git push` publishes them.
+**Publishing update (October 24, 2026).** The existing panel now supports Sanity
+persistent storage. Real test-dataset publishing, image/PDF uploads, authorization
+and persistence after server restart have passed locally. See `SANITY_SETUP.md` for setup and the test/deployment gates.
+Choose `CONTENT_STORAGE=sanity`, configure server-only credentials, then click
+**Publish changes** in `/admin`. Visitors see published content when they refresh.
+Volunteers do not need Git, a terminal, deployments, or the Sanity dashboard.
 
-1. Copy `.env.example` to `.env.local` and set `ADMIN_PASSWORD=` to a password of your choice.
-2. `npm run dev`, then open http://localhost:3000/admin.
-3. After editing, commit and push (`git add . && git commit -m "content" && git push`).
-
-On varosha.vercel.app the panel is read-only until Supabase is connected, because Vercel's
-servers cannot write files.
-
-**Supabase mode (later).** Run `supabase/schema.sql` in the Supabase SQL editor, invite board
-members as users in the Supabase dashboard, then add `SUPABASE_URL`,
-`NEXT_PUBLIC_SUPABASE_ANON_KEY` and `SUPABASE_SERVICE_ROLE_KEY` to `.env.local` and to the
-Vercel project's environment variables. The panel switches over on its own; use "Load starting
-content" on the admin home page once to copy the existing content in.
+Local mode reads/writes `data/site-data.json` for development. Production local
+mode is read-only. The old Supabase adapter remains as historical source but is
+not selected; Supabase environment variables do not select storage or login.
 
 ## Where things live
 
@@ -40,10 +35,10 @@ components/
   sections/     the big blocks that make up pages (Hero, HowItWorks, ProjectGrid, ...)
   ui/           small reusable pieces (Button, Container, PageHeader, StatsBar, ...)
   admin/        building blocks of the admin panel (forms, fields, list rows)
-data/site-data.json   the live editable content (projects, team, newsletters, events,
-                scholarship deadline, contact details). The admin panel writes here.
+data/site-data.json   starting editable content (projects, team, newsletters, events,
+                scholarship deadline, contact details). Starting content; local development writes here.
 lib/
-  data/         the storage layer: types, local file store, Supabase store, public getters
+  data/         the storage layer: types, local/Sanity storage, revisions, validation, public getters
   admin/        sign-in and sessions
 content/        copy that is NOT editable in the panel, plus the original seed data
   site.ts       name, tagline, founding year, home-page stats and "How it works"
@@ -71,21 +66,16 @@ npm install
 npm run dev        # http://localhost:3000
 npm run lint
 npm run typecheck
+npm test           # simulated publishing/authentication tests
 npm run build
 ```
 
 ## Deploy
 
-The GitHub repo is connected to Vercel. Every push to `main` builds and goes live at
-varosha.vercel.app within about a minute; there is no separate deploy step.
-
-```bash
-git add .
-git commit -m "what you changed"
-git push
-```
-
-To deploy from the terminal without pushing (rarely needed): `vercel deploy --prod`.
+The project is linked to Vercel, and GitHub records past deployments by Vercel's
+bot. Verify the current Git linkage/production branch before pushing: a push may
+deploy. **Do not push or deploy without Prameet's approval.** Content publishing
+through Sanity requires no deployment. See `SANITY_SETUP.md` before release.
 
 Old Wix URLs (`/about-us`, `/services-2`, `/members`, ...) redirect to the new pages; see `next.config.ts`.
 

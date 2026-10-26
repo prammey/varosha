@@ -1,3 +1,35 @@
+# Release preparation — October 25, 2026
+
+Prameet has authorized deploying the Sanity work and latest visual changes,
+excluding the local font picker. The shared display font remains Fraunces;
+both hero versions share the highlight animation and 10px photo shift. The main
+heading is smaller and the alternate introduction larger. The local font picker,
+its font assets and extra experimental routes are excluded from the release.
+
+The correct address is https://varosha.vercel.app (without www).
+A build issue swallowing Next.js dynamic-rendering signals was fixed and covered
+by a regression test. Production build, lint, 17 simulated tests, and desktop/mobile
+release checks pass. Vercel CLI sign-in/environment configuration remain pending;
+this note does not claim the new release has deployed.
+
+# Publishing update — October 24, 2026
+
+- Current priority: reliable publication through existing `/admin`, using Sanity.
+- Public appearance and original content/assets are preserved.
+- Implementation: server-only Sanity adapter, per-form/list/delete revision checks,
+  authenticated actions, production credential checks, safe uploads, dynamic reads.
+- Verified: 16 simulated tests, TypeScript, ESLint and production build passed.
+- Real Sanity: 15 browser checks and 7 restart checks passed against varosha-test.
+  All six test sections were restored and verified; uploaded test assets retained.
+- No production content writes, commits, pushes or deployments occurred.
+- Read-only metadata inspection: Vercel project is accessible; GitHub has production
+  deployments by vercel[bot]. Check live project linkage before any push.
+- Sanity account/project/test dataset and local credentials are configured.
+- Vercel API confirmed GitHub prammey/varosha, production branch main.
+- Next: review a separate Vercel preview, production login protection, release
+  configuration and Varosha ownership/content. Ask before production changes.
+- Older entries below describe the September state and are historical.
+
 # Progress
 
 ## Done

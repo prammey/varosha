@@ -5,18 +5,19 @@ import { DeleteButton } from "@/components/admin/DeleteButton";
 import { Checkbox, Row, TextArea, TextField } from "@/components/admin/Field";
 import { FileField } from "@/components/admin/FileField";
 import { PageTitle } from "@/components/admin/PageTitle";
-import { getSiteData } from "@/lib/data";
+import { getContentSnapshot } from "@/lib/data";
 
 export default async function EditEvent({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const isNew = id === "new";
-  const event = isNew ? null : (await getSiteData()).events.find((e) => e.id === id);
+  const { data, revisions } = await getContentSnapshot();
+  const event = isNew ? null : data.events.find((e) => e.id === id);
   if (!isNew && !event) notFound();
 
   return (
     <>
       <PageTitle title={isNew ? "Add an event" : event!.title} back={{ href: "/admin/events", label: "All events" }} />
-      <AdminForm action={saveEvent} submitLabel={isNew ? "Add event" : "Save"}>
+      <AdminForm action={saveEvent} revision={revisions.events}>
         <input type="hidden" name="id" value={event?.id ?? ""} />
         <Row>
           <TextField label="Title" name="title" required defaultValue={event?.title} placeholder="Thank You Party" />
@@ -32,7 +33,7 @@ export default async function EditEvent({ params }: { params: Promise<{ id: stri
       </AdminForm>
       {!isNew && (
         <div className="mt-6 px-2">
-          <DeleteButton action={deleteItem.bind(null, "events", event!.id)} what="event" />
+          <DeleteButton action={deleteItem.bind(null, "events", event!.id, revisions.events)} what="event" />
         </div>
       )}
     </>

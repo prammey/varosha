@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { saveListState, type ActionState } from "@/app/admin/actions";
 import type { Collection } from "@/lib/data/types";
@@ -22,6 +23,7 @@ export type ListItem = {
 
 type Props = {
   collection: Collection;
+  revision: string;
   items: ListItem[];
   /** newsletters have no hidden state */
   canHide?: boolean;
@@ -32,7 +34,9 @@ type Props = {
  * A list with up/down arrows and hide/show switches. Nothing is sent to the
  * server until "Save changes" is clicked; leaving with unsaved edits warns first.
  */
-export function SortableList({ collection, items: initial, canHide = true, emptyText = "Nothing here yet." }: Props) {
+export function SortableList({ collection, revision, items: initial, canHide = true, emptyText = "Nothing here yet." }: Props) {
+  const router = useRouter();
+  const [currentRevision, setCurrentRevision] = useState(revision);
   const [items, setItems] = useState(initial);
   const [saved, setSaved] = useState(initial);
   const [result, setResult] = useState<ActionState>(null);
@@ -55,9 +59,13 @@ export function SortableList({ collection, items: initial, canHide = true, empty
   };
   const save = () =>
     startTransition(async () => {
-      const r = await saveListState(collection, items.map((i) => ({ id: i.id, hidden: Boolean(i.hidden) })));
+      const r = await saveListState(collection, items.map((i) => ({ id: i.id, hidden: Boolean(i.hidden) })), currentRevision);
       setResult(r);
-      if (r?.ok) setSaved(items);
+      if (r?.ok) {
+        setSaved(items);
+        if (r.revision) setCurrentRevision(r.revision);
+        router.refresh();
+      }
     });
   const discard = () => {
     setItems(saved);
@@ -87,24 +95,25 @@ export function SortableList({ collection, items: initial, canHide = true, empty
             <div className="flex items-center gap-1">
               {it.extra && <a href={it.extra.href} target="_blank" rel="noopener" className="mr-2 text-[0.85rem] font-semibold">{it.extra.label}</a>}
               {canHide && (
-                <button type="button" onClick={() => toggle(it.id)} title={it.hidden ? "Show on the website" : "Hide from the website"} className="rounded-md px-2 py-1 text-[0.8rem] font-semibold text-mute hover:bg-cream-2 hover:text-ink">
+                <button type="button" disabled={pending} onClick={() => toggle(it.id)} title={it.hidden ? "Show on the website" : "Hide from the website"} className="rounded-md px-2 py-1 text-[0.8rem] font-semibold text-mute hover:bg-cream-2 hover:text-ink">
                   {it.hidden ? "Show" : "Hide"}
                 </button>
               )}
-              <button type="button" onClick={() => move(i, -1)} disabled={i === 0} aria-label="Move up" className="rounded-md px-2 py-1 text-mute hover:bg-cream-2 hover:text-ink disabled:opacity-30">↑</button>
-              <button type="button" onClick={() => move(i, 1)} disabled={i === items.length - 1} aria-label="Move down" className="rounded-md px-2 py-1 text-mute hover:bg-cream-2 hover:text-ink disabled:opacity-30">↓</button>
+              <button type="button" onClick={() => move(i, -1)} disabled={pending || i === 0} aria-label="Move up" className="rounded-md px-2 py-1 text-mute hover:bg-cream-2 hover:text-ink disabled:opacity-30">↑</button>
+              <button type="button" onClick={() => move(i, 1)} disabled={pending || i === items.length - 1} aria-label="Move down" className="rounded-md px-2 py-1 text-mute hover:bg-cream-2 hover:text-ink disabled:opacity-30">↓</button>
             </div>
           </li>
         ))}
       </ul>
 
+      {result && !result.ok && <p role="alert" className="font-semibold text-maroon">{result.message}</p>}
       {(dirty || result) && (
         <div className={cn("sticky bottom-4 flex flex-wrap items-center gap-4 rounded-xl px-4 py-3 shadow-card", dirty ? "bg-plum text-on-plum" : "bg-white")}>
           {dirty ? (
             <>
               <span className="text-[0.9rem] font-semibold">Unsaved changes to order or visibility.</span>
               <button type="button" onClick={save} disabled={pending} className="rounded-full bg-gold px-5 py-2 text-[0.9rem] font-bold text-plum-2 hover:bg-[#f0b84f] disabled:opacity-60">
-                {pending ? "Saving…" : "Save changes"}
+                {pending ? "Publishing…" : "Publish changes"}
               </button>
               <button type="button" onClick={discard} disabled={pending} className="text-[0.9rem] font-semibold text-on-plum-2 hover:text-on-plum">Discard</button>
             </>

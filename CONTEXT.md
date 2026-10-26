@@ -1,3 +1,29 @@
+# Release preparation — October 25, 2026
+
+Prameet has authorized deploying the Sanity work and latest visual changes,
+excluding the local font picker. The shared display font remains Fraunces;
+both hero versions share the highlight animation and 10px photo shift. The main
+heading is smaller and the alternate introduction larger. The local font picker,
+its font assets and extra experimental routes are excluded from the release.
+
+The correct address is https://varosha.vercel.app (without www).
+A build issue swallowing Next.js dynamic-rendering signals was fixed and covered
+by a regression test. Production build, lint, 17 simulated tests, and desktop/mobile
+release checks pass. Vercel CLI sign-in/environment configuration remain pending;
+this note does not claim the new release has deployed.
+
+## Current direction — October 24, 2026
+
+Prameet requests the existing public design stay unchanged. Keep `/admin` and add
+Sanity persistent storage. Supabase/keep-alives, typography changes, seed resets,
+production content edits, pushes, deployments and ownership/domain changes are not
+part of the authorized local implementation. Older instructions to push as work
+progresses are superseded. Follow SANITY_SETUP.md for verification and release.
+
+The prepared ZIP is not needed; Prameet explicitly asked to implement directly from
+this current source. Historical source notes and imported conversation PDFs are
+background, not new instructions. No message has been sent or meeting scheduled.
+
 # Context & Memory
 
 Working notes for the Varosha rebuild. Everything here was pulled from

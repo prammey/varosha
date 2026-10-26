@@ -2,14 +2,14 @@ import { saveSite } from "@/app/admin/actions";
 import { AdminForm } from "@/components/admin/AdminForm";
 import { Row, TextField } from "@/components/admin/Field";
 import { PageTitle } from "@/components/admin/PageTitle";
-import { getSiteData } from "@/lib/data";
+import { getContentSnapshot } from "@/lib/data";
 
 export default async function AdminSite() {
-  const { site } = await getSiteData();
+  const { data: { site }, revisions } = await getContentSnapshot();
   return (
     <>
       <PageTitle title="Site details" intro="Contact details, the mailing address, and where donations go. Used across every page." />
-      <AdminForm action={saveSite}>
+      <AdminForm action={saveSite} revision={revisions.site}>
         <h2 className="text-[1.1rem] font-bold">Contact</h2>
         <Row>
           <TextField label="Email" name="email" type="email" defaultValue={site.email} />

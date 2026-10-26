@@ -5,18 +5,19 @@ import { DeleteButton } from "@/components/admin/DeleteButton";
 import { Checkbox, Row, TextArea, TextField } from "@/components/admin/Field";
 import { FileField } from "@/components/admin/FileField";
 import { PageTitle } from "@/components/admin/PageTitle";
-import { getSiteData } from "@/lib/data";
+import { getContentSnapshot } from "@/lib/data";
 
 export default async function EditPerson({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const isNew = id === "new";
-  const person = isNew ? null : (await getSiteData()).people.find((p) => p.id === id);
+  const { data, revisions } = await getContentSnapshot();
+  const person = isNew ? null : data.people.find((p) => p.id === id);
   if (!isNew && !person) notFound();
 
   return (
     <>
       <PageTitle title={isNew ? "Add a team member" : person!.name} back={{ href: "/admin/team", label: "Team" }} />
-      <AdminForm action={savePerson} submitLabel={isNew ? "Add member" : "Save"}>
+      <AdminForm action={savePerson} revision={revisions.people}>
         <input type="hidden" name="id" value={person?.id ?? ""} />
         <Row>
           <TextField label="Name" name="name" required defaultValue={person?.name} />
@@ -28,7 +29,7 @@ export default async function EditPerson({ params }: { params: Promise<{ id: str
       </AdminForm>
       {!isNew && (
         <div className="mt-6 px-2">
-          <DeleteButton action={deleteItem.bind(null, "people", person!.id)} what="team member" />
+          <DeleteButton action={deleteItem.bind(null, "people", person!.id, revisions.people)} what="team member" />
         </div>
       )}
     </>

@@ -5,6 +5,8 @@ import { AdminShell } from "@/components/admin/AdminShell";
 
 export const metadata = { title: "Varosha admin", robots: { index: false } };
 export const dynamic = "force-dynamic";
+// Allow time for a raster/PDF upload and Sanity publication on slower connections.
+export const maxDuration = 60;
 
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
   const session = await requireAdmin();

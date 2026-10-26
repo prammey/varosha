@@ -1,5 +1,5 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import type { Store, UploadKind } from "./store";
+import type { UploadKind } from "./store";
 import type { Collection, SiteData } from "./types";
 
 /**
@@ -10,7 +10,7 @@ import type { Collection, SiteData } from "./types";
  * each with a `data` jsonb column and a `position` integer for ordering;
  * `settings` holds `scholarship` and `site` as single rows keyed by name.
  */
-export class SupabaseStore implements Store {
+export class SupabaseStore {
   readonly label = "Supabase";
   private client: SupabaseClient;
 

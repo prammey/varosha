@@ -5,15 +5,15 @@ import { DeleteButton } from "@/components/admin/DeleteButton";
 import { TextField } from "@/components/admin/Field";
 import { FileField } from "@/components/admin/FileField";
 import { PageTitle } from "@/components/admin/PageTitle";
-import { getSiteData } from "@/lib/data";
+import { getContentSnapshot } from "@/lib/data";
 
 export default async function AdminNewsletters() {
-  const { newsletters } = await getSiteData();
+  const { data: { newsletters }, revisions } = await getContentSnapshot();
   const nextYear = (newsletters[0]?.year ?? new Date().getFullYear() - 1) + 1;
   return (
     <>
-      <PageTitle title="Newsletters" intro="One PDF per year. The top one is featured on the website. Use the arrows to reorder, then click Save changes." />
-      <AdminForm action={saveNewsletter} submitLabel="Add newsletter">
+      <PageTitle title="Newsletters" intro="One PDF per year. The top one is featured on the website. Use the arrows to reorder, then click Publish changes." />
+      <AdminForm action={saveNewsletter} revision={revisions.newsletters}>
         <h2 className="text-[1.1rem] font-bold">Add a year</h2>
         <div className="grid gap-4 sm:grid-cols-[140px_1fr]">
           <TextField label="Year" name="year" type="number" required defaultValue={nextYear} />
@@ -23,6 +23,8 @@ export default async function AdminNewsletters() {
       <h2 className="mb-3 mt-8 text-[1.1rem] font-bold">Published years</h2>
       <SortableList
         collection="newsletters"
+        key={revisions.newsletters}
+        revision={revisions.newsletters}
         canHide={false}
         items={newsletters.map((n) => ({ id: n.id, title: String(n.year), extra: { href: n.file, label: "Open PDF ↗" } }))}
         emptyText="No newsletters yet. Add the first one above."
@@ -33,7 +35,7 @@ export default async function AdminNewsletters() {
           {newsletters.map((n) => (
             <li key={n.id} className="flex items-center justify-between gap-3">
               <span className="font-semibold">{n.year}</span>
-              <DeleteButton action={deleteItem.bind(null, "newsletters", n.id)} what={`${n.year} newsletter`} />
+              <DeleteButton action={deleteItem.bind(null, "newsletters", n.id, revisions.newsletters)} what={`${n.year} newsletter`} />
             </li>
           ))}
         </ul>

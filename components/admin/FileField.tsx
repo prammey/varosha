@@ -27,7 +27,7 @@ export function FileField({ label, name, accept, current, hint, removeName }: Pr
       <div className="flex flex-wrap items-center gap-4">
         {isImage && shown && (
           <span className="relative block h-[84px] w-[112px] overflow-hidden rounded-lg bg-cream-2">
-            <Image src={shown} alt="" fill sizes="112px" className="object-cover" unoptimized={shown.startsWith("blob:")} />
+            <Image src={shown} alt="" fill sizes="112px" className="object-cover" unoptimized={shown.startsWith("blob:") || shown.startsWith("/uploads/")} />
           </span>
         )}
         {!isImage && current && !fileName && (
@@ -38,7 +38,7 @@ export function FileField({ label, name, accept, current, hint, removeName }: Pr
           <input
             type="file"
             name={name}
-            accept={accept}
+            accept={isImage ? "image/jpeg,image/png,image/webp,image/gif" : accept}
             className="sr-only"
             onChange={(e) => {
               const f = e.target.files?.[0];
@@ -55,6 +55,7 @@ export function FileField({ label, name, accept, current, hint, removeName }: Pr
           <input type="checkbox" name={removeName} className="accent-maroon" /> Remove the current photo
         </label>
       )}
+      <span className="text-[0.82rem] text-mute">Maximum file size: 3 MB.</span>
       {hint && <span className="text-[0.82rem] text-mute">{hint}</span>}
     </div>
   );

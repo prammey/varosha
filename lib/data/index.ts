@@ -2,11 +2,14 @@
  * What the public pages call. Hidden items are filtered out here,
  * so pages never need to think about drafts.
  */
+import { cache } from "react";
 import { getStore } from "./store";
 import type { SiteData } from "./types";
 
+export const getContentSnapshot = cache(async () => (await getStore()).snapshot());
+
 export async function getSiteData(): Promise<SiteData> {
-  return (await getStore()).read();
+  return (await getContentSnapshot()).data;
 }
 
 export async function getProjects() {
