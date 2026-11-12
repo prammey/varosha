@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* brand-colors preview at /alt; inert unless .theme-alt is on the page */
+@import "./theme-alt.css";
 
 /*
   Design tokens. Every color and font on the site comes from here.

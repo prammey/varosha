@@ -1,3 +1,16 @@
+# Board feedback round — November 12, 2026
+
+- Scholarship paused: routes moved to `app/(site)/_scholarship` and
+  `app/admin/(panel)/_scholarship` (underscore = not a route). Rename back to restore,
+  and re-add the links in nav.ts, Footer.tsx, AdminShell.tsx, sitemap.ts.
+- "Palatine, IL" removed from the logo line; address removed from footer and Contact.
+  It now appears only in the "Check, by mail" row on /support.
+- Home card "Scholarship" replaced with "Our team".
+- Brand-colors preview: /alt turns it on, /original turns it off (session cookie),
+  floating switcher appears only for visitors who used one of those links.
+  All styling in `styles/theme-alt.css`; components untouched.
+- Legal pages still mention scholarship applications (draft text, board to review).
+
 # Hosted release configuration — October 25, 2026
 
 Prameet explicitly approved the production deployment and privately saving the

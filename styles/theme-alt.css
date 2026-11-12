@@ -1,0 +1,124 @@
+/*
+  Brand-colors preview (/alt). Light beige pages, the orange from the logo as the
+  accent, Varosha's traditional red as a second color.
+
+  Everything here applies only when app/(site)/layout.tsx wraps the page in
+  .theme-alt, which happens after a visitor opens /alt. The current design never
+  matches these rules. To adopt this palette for good, move the token values into
+  globals.css; to drop it, delete this file and its import.
+*/
+
+:root:has(.theme-alt) {
+  /* light surfaces */
+  --color-cream: #fbf6ee;
+  --color-cream-2: #f5ecdf;
+  --color-sand: #ede2d0;
+
+  /* espresso text */
+  --color-ink: #2b1e16;
+  --color-ink-2: #5e4c3f;
+  --color-mute: #7e6b5d;
+  --color-line: #e8dccb;
+
+  /* "maroon" slot becomes Ember: the logo orange, deepened so text stays readable */
+  --color-maroon: #a9500d;
+  --color-maroon-2: #8e430b;
+  --color-maroon-3: #6e3409;
+  --color-rose: #fbe7d6;
+  --color-rose-2: #f5d2b6;
+
+  /* "gold" slot becomes Saffron: the exact logo orange, for fills only */
+  --color-gold: #e17317;
+  --color-gold-2: #c8620e;
+  --color-gold-soft: #fdf1d9;
+
+  /* "teal" slot becomes Sindoor red; its dark band becomes a warm wash */
+  --color-teal: #a8322a;
+  --color-teal-2: #faf0e4;
+  --color-teal-soft: #f8e0da;
+
+  /* the dark surfaces become light; text on them becomes espresso */
+  --color-plum: #f5ecdf;
+  --color-plum-3: #fffcf7;
+  --color-on-plum: #2b1e16;
+  --color-on-plum-2: #5e4c3f;
+  /* plum-2 stays dark: it is also the text color on Saffron buttons */
+
+  --shadow-card: 0 2px 6px rgba(43, 30, 22, 0.06), 0 24px 48px -20px rgba(43, 30, 22, 0.24);
+
+  --alt-band: #f1e4d1;
+  --alt-blush: #f6dfd5;
+  --alt-ember: #a9500d;
+  --alt-sindoor: #a8322a;
+}
+
+/* ---- sections that were dark: now light bands ---- */
+
+.theme-alt .bg-plum-2 { background-color: var(--alt-band); }
+@media (max-width: 767.98px) {
+  /* How it works: cream top quarter behind the stats bar, then the band */
+  .theme-alt section.bg-plum-2 > div:first-child {
+    background-image: linear-gradient(to bottom, var(--color-cream) 25%, var(--alt-band) 25%);
+  }
+}
+
+/* Quote band and the About facts band were maroon */
+.theme-alt section.bg-maroon { background-color: var(--alt-blush); }
+.theme-alt .text-\[\#f0d4dc\] { color: var(--color-ink-2); }
+.theme-alt .text-white\/5 { color: rgba(169, 80, 13, 0.07); }
+.theme-alt .bg-black\/\[0\.18\] { background-color: rgba(255, 252, 247, 0.75); }
+
+/* the Contact card's colored half stays orange, with white type */
+.theme-alt div.bg-maroon.text-on-plum { color: #fff; }
+
+/* Contact page: light veil over the photo instead of a dark one */
+.theme-alt [class*="1e1219"]::after {
+  background: linear-gradient(180deg, var(--color-cream) 0%, rgba(251, 246, 238, 0.72) 50%, var(--color-cream) 100%);
+}
+
+/* translucent white cards were made for dark bands */
+.theme-alt .bg-white\/\[0\.07\],
+.theme-alt .bg-white\/\[0\.06\] { background-color: #fffcf7; }
+.theme-alt .hover\:bg-white\/\[0\.12\]:hover { background-color: #fff; }
+
+/* hairlines and outlines drawn in white */
+.theme-alt .border-white\/10,
+.theme-alt .md\:border-white\/10 { border-color: rgba(43, 30, 22, 0.1); }
+.theme-alt .border-white\/20 { border-color: rgba(43, 30, 22, 0.2); }
+.theme-alt .border-white\/50 { border-color: rgba(43, 30, 22, 0.35); }
+
+/* pale teal text on the old teal bands */
+.theme-alt .text-\[\#bfdadb\] { color: var(--color-ink-2); }
+
+/* ---- accents ---- */
+
+/* gold text was for dark backgrounds; on beige it needs the deeper orange */
+.theme-alt .text-gold,
+.theme-alt .hover\:text-gold:hover { color: var(--alt-ember); }
+
+.theme-alt .hover\:bg-\[\#f0b84f\]:hover { background-color: #ec8a3a; border-color: #ec8a3a; }
+
+/* closing CTA strip: espresso button and text on the Saffron band */
+.theme-alt div.bg-gold a.bg-maroon { background-color: var(--color-ink); border-color: var(--color-ink); }
+.theme-alt div.bg-gold a.bg-maroon:hover { background-color: #000; border-color: #000; }
+.theme-alt div.bg-gold .text-maroon-3 { color: var(--color-ink); }
+
+/* header Donate block in the traditional Varosha red */
+.theme-alt header a.bg-maroon { background-color: var(--alt-sindoor); }
+
+/* hero highlighter stroke in the logo orange */
+.theme-alt .hero-marker {
+  background-image:
+    linear-gradient(var(--color-cream), var(--color-cream)),
+    linear-gradient(var(--color-cream), var(--color-cream)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M7 26 Q93 15 190 21 T392 15 T604 20 T812 13 Q921 9 992 18 L998 76 Q905 89 803 82 T602 89 T400 82 T197 90 Q82 92 2 80 Z' fill='%23e17317' opacity='.42'/%3E%3Cpath d='M15 38 Q180 27 350 33 T682 27 Q856 23 987 30 L990 69 Q831 76 663 72 T335 78 Q146 83 9 72 Z' fill='%23e17317' opacity='.14'/%3E%3C/svg%3E");
+}
+
+/* About page: the wavy divider leading into the (now blush) mission band */
+.theme-alt .fill-maroon { fill: var(--alt-blush); }
+
+/* Support page: the QR graphic has white labels, so its panel stays dark */
+.theme-alt .bg-plum:has(img[src*="zelle-venmo-qr"]) {
+  background-color: var(--color-ink);
+  color: #e8dccb;
+}
