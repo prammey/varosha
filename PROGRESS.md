@@ -10,6 +10,10 @@
   floating switcher appears only for visitors who used one of those links.
   All styling in `styles/theme-alt.css`; components untouched.
 - Legal pages still mention scholarship applications (draft text, board to review).
+- /alt palette v3 (Prameet's direction): red lead accent, original yellow for highlights,
+  light orange (#f8dbbe) replaces every dark band/page plus Events and Support, cream
+  alternates, black only for stats bar + footer. Contact keeps the original design.
+- /althome (centered alternate home) deleted.
 
 # Hosted release configuration — October 25, 2026
 

@@ -1,11 +1,12 @@
 /*
-  Brand-colors preview (/alt): "lamp-black and copper".
-  Built from varosha.org's own three colors, each given one job:
-    Paper / Sand  every page background (light, as the board asked)
-    Copper        the brand accent, from the logo's rays and the old site's banners
-    Red           actions only: Donate and primary buttons
-    Lamp-black    type, plus small dark anchors (stats bar, contact card, footer)
-                  that echo the black square of the logo
+  Brand-colors preview (/alt): red, yellow and orange on warm light pages.
+    Red      the lead accent: Donate, main buttons, headline italics, small labels
+    Yellow   highlights: the hero marker, the 2004 badge, stat numbers, the
+             "Join us" strip, footer headings and the footer Donate button
+    Orange   light orange replaces every band and page that used to be dark,
+             alternating with cream; full orange behind the hero photo
+    Black    only the stats bar and the footer, so the yellow has something to sit on
+  The Contact page keeps the original design exactly.
 
   Everything here applies only when app/(site)/layout.tsx wraps the page in
   .theme-alt, which happens after a visitor opens /alt. The current design never
@@ -13,162 +14,144 @@
 */
 
 :root:has(.theme-alt) {
-  --alt-paper: #faf6ef;
-  --alt-sand: #f2ebdf;
-  --alt-card: #fffdf9;
-  --alt-ink: #1c1714;
-  --alt-ink-2: #4f4640;
-  --alt-copper: #d07a35;
-  --alt-copper-deep: #a8541a;
+  --alt-cream: #fbf4e8;
+  --alt-apricot: #f8dbbe;
+  --alt-card: #fffaf4;
+  --alt-orange: #dd7a30;
   --alt-red: #b3261e;
-  --alt-red-deep: #8f1d17;
-  --alt-hairline: 0 0 0 1px rgba(28, 23, 20, 0.07);
-
-  /* light surfaces */
-  --color-cream: var(--alt-paper);
-  --color-cream-2: var(--alt-sand);
-  --color-sand: #e9dfcf;
+  --alt-ink: #2a1e1a;
+  --alt-ink-2: #574740;
+  --alt-hairline: 0 0 0 1px rgba(42, 30, 26, 0.07);
 
   /* type */
   --color-ink: var(--alt-ink);
   --color-ink-2: var(--alt-ink-2);
-  --color-mute: #766a61;
-  --color-line: #e6dccd;
+  --color-mute: #7a6658;
+  --color-line: #ecd8c3;
 
-  /* "maroon" = accent type in deep copper (readable on paper) */
-  --color-maroon: var(--alt-copper-deep);
-  --color-maroon-2: #8c4414;
-  --color-maroon-3: #6b3510;
+  /* "maroon" = the Donate red, now the lead accent */
+  --color-maroon: var(--alt-red);
+  --color-maroon-2: #8f1d17;
+  --color-maroon-3: #6e1611;
+  --color-rose: #fbe2de;
+  --color-rose-2: #f6cfc8;
 
-  /* every old tint collapses to one quiet copper wash: no pink, no yellow */
-  --color-rose: #f5eadc;
-  --color-rose-2: #eedcc6;
-  --color-gold-soft: #f5eadc;
-  --color-teal-soft: #f5eadc;
+  /* "gold" stays the original yellow: --color-gold, -gold-2, -gold-soft unchanged */
 
-  /* "gold" = copper fills, always with dark type on top */
-  --color-gold: var(--alt-copper);
-  --color-gold-2: var(--alt-copper-deep);
+  /* "teal" = orange: deep orange type, pale orange tint, cream band */
+  --color-teal: #b85a18;
+  --color-teal-soft: #fff1e2;
+  --color-teal-2: var(--alt-cream);
 
-  /* "teal" bands become paper; teal type becomes copper */
-  --color-teal: var(--alt-copper-deep);
-  --color-teal-2: var(--alt-paper);
-
-  /* the dark tokens become lamp-black (used only where a dark anchor stays) */
-  --color-plum: #241e1a;
-  --color-plum-2: var(--alt-ink);
-  --color-plum-3: #322a25;
-  --color-on-plum: #f6efe6;
-  --color-on-plum-2: #c9bcb0;
-
-  --shadow-card: 0 1px 2px rgba(28, 23, 20, 0.06), 0 22px 44px -22px rgba(28, 23, 20, 0.28);
+  /* dark tokens = warm black, used only for the stats bar, footer and QR panel */
+  --color-plum: #2a211d;
+  --color-plum-2: #1f1815;
+  --color-plum-3: #3a2e29;
+  --color-on-plum: #f7ede2;
+  --color-on-plum-2: #d2c2b6;
 }
 
-/* ---- pages and bands that were dark become light ---- */
+/* ---- bands and pages that were dark become light orange (or cream) ---- */
 
-/* Inside these, "text on dark" turns into lamp-black type and cards turn white */
-.theme-alt :is(main > div.bg-plum, section.bg-plum-2, .bg-teal-2, section.bg-maroon, main > div:has(> [class*="1e1219"])) {
+/* inside these, "text on dark" turns into dark type and cards turn white */
+.theme-alt :is(main > div.bg-plum, section.bg-plum-2, .bg-teal-2, section.bg-maroon) {
   --color-on-plum: var(--alt-ink);
   --color-on-plum-2: var(--alt-ink-2);
   --color-plum-3: var(--alt-card);
 }
-.theme-alt main > div.bg-plum { background-color: var(--alt-paper); }
+
+/* light orange: How it works, quote band, About mission, Projects, Newsletters, Team */
+.theme-alt main > div.bg-plum,
+.theme-alt main > div.bg-teal-2,
 .theme-alt section.bg-plum-2,
 .theme-alt div.bg-plum-2[aria-hidden="true"],
-.theme-alt section.bg-maroon { background-color: var(--alt-sand); }
-.theme-alt .fill-maroon { fill: var(--alt-sand); }
+.theme-alt section.bg-maroon { background-color: var(--alt-apricot); }
+.theme-alt .fill-maroon { fill: var(--alt-apricot); }
+/* "What your support has built" stays cream, between two orange bands */
+.theme-alt section.bg-teal-2 { background-color: var(--alt-cream); }
+
+/* Events: the whole page is light orange */
+.theme-alt main:has(> section.bg-cream-2),
+.theme-alt main > section.bg-cream-2 { background-color: var(--alt-apricot); }
+/* Support: light orange too, so its white panels sit on color */
+.theme-alt main:has(img[src*="zelle-venmo-qr"]) { background-color: var(--alt-apricot); }
+.theme-alt main:has(> section.bg-cream-2) > div.bg-cream[aria-hidden="true"] { background-color: transparent; }
+.theme-alt main:has(> section.bg-cream-2) .fill-cream-2 { fill: var(--alt-apricot); }
+
 @media (max-width: 767.98px) {
-  /* How it works on phones: paper behind the top quarter of the stats bar */
+  /* How it works on phones: cream behind the top quarter of the stats bar */
   .theme-alt section.bg-plum-2 > div:first-child {
-    background-image: linear-gradient(to bottom, var(--alt-paper) 25%, var(--alt-sand) 25%);
+    background-image: linear-gradient(to bottom, var(--alt-cream) 25%, var(--alt-apricot) 25%);
   }
 }
 
-/* Small dark anchors keep light type, even inside a light band */
-.theme-alt .bg-plum:not(main > .bg-plum) {
-  --color-on-plum: #f6efe6;
-  --color-on-plum-2: #c9bcb0;
-  --color-plum-3: #322a25;
-}
-
-/* The stats bar stays black only on the home page; on Support it is a light card,
-   so that page doesn't stack two black blocks */
-.theme-alt main .bg-plum.shadow-card:not(section.bg-plum-2 *) {
-  --color-on-plum: var(--alt-ink);
-  --color-on-plum-2: var(--alt-ink-2);
-  --color-plum-3: var(--alt-paper);
-  background-color: var(--alt-card);
-  box-shadow: var(--alt-hairline), var(--shadow-card);
-}
-.theme-alt main .bg-plum.shadow-card:not(section.bg-plum-2 *) .text-gold { color: var(--alt-copper-deep); }
-.theme-alt main .bg-plum.shadow-card:not(section.bg-plum-2 *) :is(.border-white\/10, .md\:border-white\/10) {
-  border-color: rgba(28, 23, 20, 0.08);
-}
-
-/* white cards on light bands: thin hairline instead of a tint */
+/* white cards on the orange: a thin hairline instead of a tint */
 .theme-alt :is(main > div.bg-plum, .bg-teal-2) .bg-plum-3,
 .theme-alt .bg-white\/\[0\.07\],
-.theme-alt .bg-white\/\[0\.06\] {
+.theme-alt .bg-white\/\[0\.06\],
+.theme-alt .bg-black\/\[0\.18\] {
   background-color: var(--alt-card);
   box-shadow: var(--alt-hairline);
 }
 .theme-alt .hover\:bg-white\/\[0\.12\]:hover { background-color: #fff; }
-.theme-alt .bg-black\/\[0\.18\] { background-color: var(--alt-card); box-shadow: var(--alt-hairline); }
 
-/* How it works: three white cards instead of three tints */
-.theme-alt section.bg-plum-2 :is(.bg-rose, .bg-gold-soft, .bg-teal-soft) {
-  background-color: var(--alt-card);
-  box-shadow: var(--alt-hairline);
-}
-
-/* outlines and labels that were drawn for dark backgrounds */
-.theme-alt main .border-white\/20 { border-color: rgba(28, 23, 20, 0.18); }
-.theme-alt main .border-white\/50 { border-color: rgba(28, 23, 20, 0.35); }
-.theme-alt .text-\[\#bfdadb\] { color: var(--alt-ink-2); }
+/* outlines and pale type that were drawn for dark backgrounds */
+.theme-alt main .border-white\/20 { border-color: rgba(42, 30, 26, 0.18); }
+.theme-alt main .border-white\/50 { border-color: rgba(42, 30, 26, 0.35); }
+.theme-alt .text-\[\#bfdadb\],
 .theme-alt .text-\[\#f0d4dc\] { color: var(--alt-ink-2); }
-.theme-alt .text-white\/5 { color: rgba(168, 84, 26, 0.08); }
+.theme-alt .text-white\/5 { color: rgba(179, 38, 30, 0.07); }
 
-/* Contact page: paper veil over the photo instead of a dark one */
-.theme-alt [class*="1e1219"]::after {
-  background: linear-gradient(180deg, var(--alt-paper) 0%, rgba(250, 246, 239, 0.74) 50%, var(--alt-paper) 100%);
+/* yellow type can't be read on light orange: labels and quote marks there go red */
+.theme-alt :is(main > div.bg-plum, section.bg-plum-2, .bg-teal-2, section.bg-maroon) .text-gold {
+  color: var(--alt-red);
 }
 
-/* ---- copper ---- */
+/* ---- small dark anchors keep light type and yellow numbers ---- */
 
-/* gold type was made for dark backgrounds: on paper it uses deep copper */
-.theme-alt main .text-gold { color: var(--alt-copper-deep); }
-.theme-alt main .bg-plum:not(main > .bg-plum) .text-gold { color: var(--alt-copper); }
+.theme-alt .bg-plum:not(main > .bg-plum) {
+  --color-on-plum: #f7ede2;
+  --color-on-plum-2: #d2c2b6;
+  --color-plum-3: #3a2e29;
+}
+.theme-alt .bg-plum:not(main > .bg-plum) .text-gold { color: var(--color-gold); }
+
+/* Support page: its stats row is a light card with red numbers, so the page
+   doesn't stack two black blocks (the QR panel stays black for its white labels) */
+.theme-alt main .bg-plum.shadow-card:not(section.bg-plum-2 *) {
+  --color-on-plum: var(--alt-ink);
+  --color-on-plum-2: var(--alt-ink-2);
+  --color-plum-3: var(--alt-cream);
+  background-color: var(--alt-card);
+  box-shadow: var(--alt-hairline), var(--shadow-card);
+}
+.theme-alt main .bg-plum.shadow-card:not(section.bg-plum-2 *) .text-gold { color: var(--alt-red); }
+.theme-alt main .bg-plum.shadow-card:not(section.bg-plum-2 *) :is(.border-white\/10, .md\:border-white\/10) {
+  border-color: rgba(42, 30, 26, 0.08);
+}
+
+/* ---- orange ---- */
 
 /* the tilted block behind the hero photo */
-.theme-alt span.bg-maroon { background-color: var(--alt-copper); }
+.theme-alt span.bg-maroon { background-color: var(--alt-orange); }
 
-/* hero highlighter in copper */
-.theme-alt .hero-marker {
-  background-image:
-    linear-gradient(var(--color-cream), var(--color-cream)),
-    linear-gradient(var(--color-cream), var(--color-cream)),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M7 26 Q93 15 190 21 T392 15 T604 20 T812 13 Q921 9 992 18 L998 76 Q905 89 803 82 T602 89 T400 82 T197 90 Q82 92 2 80 Z' fill='%23d07a35' opacity='.38'/%3E%3Cpath d='M15 38 Q180 27 350 33 T682 27 Q856 23 987 30 L990 69 Q831 76 663 72 T335 78 Q146 83 9 72 Z' fill='%23d07a35' opacity='.14'/%3E%3C/svg%3E");
+/* ---- Contact: the original design, exactly ---- */
+
+.theme-alt main > div:has(> [class*="1e1219"]) {
+  --color-cream: #fbf4e8;
+  --color-cream-2: #f5e9d6;
+  --color-ink: #2a1e22;
+  --color-ink-2: #5a4a50;
+  --color-mute: #8c7a80;
+  --color-line: #e6d9c8;
+  --color-maroon: #93304a;
+  --color-maroon-2: #742239;
+  --color-maroon-3: #5a1a2b;
+  --color-rose: #f6dee3;
+  --color-rose-2: #efc9d1;
+  --color-plum: #2b1b27;
+  --color-plum-2: #1e1219;
+  --color-plum-3: #3a2636;
+  --color-on-plum: #f7ede2;
+  --color-on-plum-2: #cdbcc4;
 }
-
-.theme-alt .hover\:bg-\[\#f0b84f\]:hover { background-color: #dc8b48; border-color: #dc8b48; }
-
-/* the closing copper band: lamp-black type and button, like the old site's banners */
-.theme-alt div.bg-gold .text-maroon-3 { color: var(--alt-ink); }
-.theme-alt div.bg-gold a.bg-maroon { background-color: var(--alt-ink); border-color: var(--alt-ink); }
-.theme-alt div.bg-gold a.bg-maroon:hover { background-color: #000; border-color: #000; }
-
-/* ---- red: actions only ---- */
-
-.theme-alt a.bg-maroon { background-color: var(--alt-red); border-color: var(--alt-red); }
-.theme-alt a.bg-maroon:hover { background-color: var(--alt-red-deep); border-color: var(--alt-red-deep); }
-
-/* ---- lamp-black anchors ---- */
-
-/* Contact card: black half with the logo, like the emblem itself */
-.theme-alt div.bg-maroon.text-on-plum { background-color: var(--alt-ink); color: #f6efe6; }
-
-/* Support page: the QR graphic has white labels, so its panel stays dark */
-.theme-alt .bg-plum:has(img[src*="zelle-venmo-qr"]) { background-color: var(--alt-ink); }
-
-/* footer: a thin copper rule on top, a nod to the old site's copper strip */
-.theme-alt footer.bg-plum-2 { box-shadow: inset 0 4px 0 var(--alt-copper); }
