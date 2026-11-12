@@ -15,6 +15,16 @@
   alternates, black only for stats bar + footer. Contact keeps the original design.
 - /althome (centered alternate home) deleted.
 - Display font is now EB Garamond (replaces Fraunces) site-wide, weight 460; wordmark 2rem.
+- /alt v4: Contact page is light "sunset" (cream to warm orange) around the original
+  maroon card; Newsletters and Support back to cream; brick red buttons on yellow strips.
+- Copy: "Nine years of print." (plain); About "held for over twenty years"; ledes weight 360.
+
+## Ask the board
+- Social accounts: do X / YouTube / Instagram exist? (icons link to /contact until then;
+  or swap two of them for email and phone)
+- EIN and Candid/GuideStar profile, to show on Support and in the footer
+- Impact numbers: people trained, loans made, repayment rate
+- Newer newsletters (2023 onward) and recent high-resolution photos
 
 # Hosted release configuration — October 25, 2026
 

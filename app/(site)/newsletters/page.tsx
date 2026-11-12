@@ -22,7 +22,7 @@ export default async function NewslettersPage() {
       <PageHeader
         tone="dark"
         eyebrow="Newsletters"
-        title={<>{years === 9 ? "Nine" : years} years, <em className="text-gold">in print</em>.</>}
+        title={<>{years === 9 ? "Nine" : years} years of print.</>}
         lede="Each annual newsletter reports the year’s projects, the numbers behind them, and photographs from the centers in West Bengal. Every issue opens as a PDF."
       />
       <Container className="flex flex-col gap-10 pb-[clamp(60px,8vw,120px)]">

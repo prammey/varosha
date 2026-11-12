@@ -95,7 +95,7 @@ h1, h2, h3, .display {
 .lede {
   font-size: clamp(1.15rem, 1.6vw, 1.35rem);
   line-height: 1.5;
-  font-weight: 300;
+  font-weight: 360;
 }
 
 /* Indian cusped-arch image mask (the "gate"). Defined in components/ui/ArchDefs.tsx */

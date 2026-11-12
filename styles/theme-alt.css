@@ -69,12 +69,12 @@
 .theme-alt .fill-maroon { fill: var(--alt-apricot); }
 /* "What your support has built" stays cream, between two orange bands */
 .theme-alt section.bg-teal-2 { background-color: var(--alt-cream); }
+/* Newsletters (the page that links to PDFs) stays cream, so orange doesn't cover every page */
+.theme-alt main > div.bg-plum:has(a[href$=".pdf"]) { background-color: var(--alt-cream); }
 
 /* Events: the whole page is light orange */
 .theme-alt main:has(> section.bg-cream-2),
 .theme-alt main > section.bg-cream-2 { background-color: var(--alt-apricot); }
-/* Support: light orange too, so its white panels sit on color */
-.theme-alt main:has(img[src*="zelle-venmo-qr"]) { background-color: var(--alt-apricot); }
 .theme-alt main:has(> section.bg-cream-2) > div.bg-cream[aria-hidden="true"] { background-color: transparent; }
 .theme-alt main:has(> section.bg-cream-2) .fill-cream-2 { fill: var(--alt-apricot); }
 
@@ -130,12 +130,36 @@
   border-color: rgba(42, 30, 26, 0.08);
 }
 
+/* yellow strips: a deeper brick red for the button, so red-on-yellow reads
+   refined rather than loud */
+.theme-alt div.bg-gold {
+  --color-maroon: #9a2a1f;
+  --color-maroon-2: #7c1f16;
+}
+
 /* ---- orange ---- */
 
 /* the tilted block behind the hero photo */
 .theme-alt span.bg-maroon { background-color: var(--alt-orange); }
 
-/* ---- Contact: the original design, exactly ---- */
+/* ---- Contact: the original card exactly, on a light "sunset" page ----
+   Cream at the top fading to warm orange at the bottom, with the photo still
+   showing through: the same depth as the original dark veil, but lit like a
+   lamp instead of night. Orange and maroon are both reds, so the card sits in
+   its own color family. */
+
+.theme-alt main > div:has(> [class*="1e1219"]) > div:first-child::after {
+  background: linear-gradient(180deg, #fbf4e8 0%, rgba(250, 232, 212, 0.74) 45%, #f6cfae 100%);
+}
+.theme-alt main > div:has(> [class*="1e1219"]) .text-center.text-on-plum { color: #2a1e22; }
+.theme-alt main > div:has(> [class*="1e1219"]) .text-center.text-on-plum .text-on-plum-2 { color: #5a4a50; }
+.theme-alt main > div:has(> [class*="1e1219"]) .text-center.text-on-plum .text-gold { color: #93304a; }
+/* a softer, maroon-tinted shadow under the card on the light page */
+.theme-alt main > div:has(> [class*="1e1219"]) .shadow-\[0_40px_80px_-30px_rgba\(0\,0\,0\,\.7\)\] {
+  box-shadow: 0 40px 80px -34px rgba(90, 26, 43, 0.45);
+}
+
+/* card and page tokens: the original design's values */
 
 .theme-alt main > div:has(> [class*="1e1219"]) {
   --color-cream: #fbf4e8;
