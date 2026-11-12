@@ -54,6 +54,11 @@
 
 html {
   scroll-behavior: smooth;
+  /* shows only when scrolling past the top or bottom; see components/layout/OverscrollColor.tsx */
+  background-color: var(--color-cream);
+}
+html.overscroll-footer {
+  background-color: var(--color-plum-2);
 }
 
 body {

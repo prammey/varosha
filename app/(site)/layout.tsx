@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SocialRail } from "@/components/layout/SocialRail";
+import { OverscrollColor } from "@/components/layout/OverscrollColor";
 import { PreviewSwitcher } from "@/components/preview/PreviewSwitcher";
 import { PREVIEW_COOKIE, type PreviewTheme } from "@/lib/preview-theme";
 
@@ -27,6 +28,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       {/* styles/theme-alt.css recolors everything inside .theme-alt */}
       {preview === "alt" ? <div className="theme-alt">{page}</div> : page}
       {preview && <PreviewSwitcher current={preview} />}
+      <OverscrollColor />
     </>
   );
 }
