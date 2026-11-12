@@ -15,7 +15,7 @@ export function Logo({ tone = "light", tag = `Since ${site.foundedYear}`, classN
         <Image src="/brand/logo.svg" alt="" width={50} height={50} className="block h-full w-full" />
       </span>
       <span className="flex flex-col">
-        <span className="display text-[1.75rem] font-medium leading-none" style={{ fontVariationSettings: '"SOFT" 80, "WONK" 1' }}>
+        <span className="display text-[2rem] font-medium leading-none">
           {site.name}
         </span>
         <span className={cn("mt-1.5 font-sans text-[0.7rem] font-semibold uppercase leading-none tracking-[0.14em]", dark ? "text-on-plum-2" : "text-mute")}>{tag}</span>

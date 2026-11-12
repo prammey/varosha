@@ -49,7 +49,7 @@ export function HowItWorks() {
                   i === 1 && "max-md:hover:translate-y-2",
                 )}
               >
-                <span className={cn("display text-[3.2rem] font-light leading-none", numberColors[i])} style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1' }}>
+                <span className={cn("display text-[3.2rem] font-light leading-none", numberColors[i])}>
                   {i + 1}
                 </span>
                 <h3 className="text-[clamp(1.35rem,2vw,1.65rem)]">{step.title}</h3>

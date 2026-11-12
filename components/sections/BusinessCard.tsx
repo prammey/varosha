@@ -12,7 +12,7 @@ export function BusinessCard({ site }: { site: SiteDetails }) {
         <span className="block h-[72px] w-[72px] overflow-hidden rounded-[14px] shadow-[0_8px_20px_-8px_rgba(0,0,0,.6)]">
           <Image src="/brand/logo.svg" alt="" width={72} height={72} className="block h-full w-full" />
         </span>
-        <span className="display text-[2rem] leading-none" style={{ fontVariationSettings: '"SOFT" 80, "WONK" 1' }}>{brand.name}</span>
+        <span className="display text-[2rem] leading-none">{brand.name}</span>
         <span className="font-sans text-[0.78rem] font-semibold uppercase tracking-[0.1em] text-gold-soft">{brand.tagline}</span>
       </div>
 

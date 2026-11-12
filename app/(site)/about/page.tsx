@@ -45,7 +45,7 @@ export default async function AboutPage() {
         <Container className="flex flex-col gap-8">
           <Reveal className="flex flex-col items-center gap-2.5 text-center">
             <span className="eyebrow text-gold">Our mission</span>
-            <p className="display mx-auto max-w-[24ch] text-[clamp(1.5rem,2.9vw,2.4rem)] font-light leading-[1.3]" style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1' }}>
+            <p className="display mx-auto max-w-[24ch] text-[clamp(1.5rem,2.9vw,2.4rem)] font-light leading-[1.3]">
               {site.tagline}.
             </p>
           </Reveal>

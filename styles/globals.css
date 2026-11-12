@@ -39,7 +39,7 @@
   --color-on-plum-2: #cdbcc4;
 
   /* type: set by next/font in app/layout.tsx via CSS variables */
-  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-display: var(--font-garamond), Garamond, Georgia, serif;
   --font-serif: var(--font-source-serif), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-karla), "Helvetica Neue", Arial, sans-serif;
 
@@ -68,14 +68,13 @@ body {
 
 h1, h2, h3, .display {
   font-family: var(--font-display);
-  font-weight: 400;
+  /* a touch above regular so Garamond's hairlines hold up on screens */
+  font-weight: 460;
   line-height: 1.05;
   letter-spacing: -0.015em;
   text-wrap: balance;
-  font-variation-settings: "SOFT" 70, "WONK" 1;
 }
 
-h3 { font-variation-settings: "SOFT" 40, "WONK" 0; }
 
 :focus-visible {
   outline: 3px solid var(--color-gold);

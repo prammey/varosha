@@ -21,7 +21,7 @@ export function StatsBar({ items, className }: { items: readonly Stat[]; classNa
             "border-white/10 max-md:[&:nth-child(-n+2)]:border-b max-md:odd:border-r",
           )}
         >
-          <strong className="display block text-[2.2rem] font-medium leading-none text-gold" style={{ fontVariationSettings: '"SOFT" 80' }}>
+          <strong className="display block text-[2.2rem] font-medium leading-none text-gold">
             {s.value}
           </strong>
           <span className="mt-2 block font-sans text-[0.9rem] text-on-plum-2">{s.label}</span>

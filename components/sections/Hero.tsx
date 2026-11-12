@@ -50,7 +50,7 @@ function Stamp() {
           <textPath href="#stamp-circle">100% TO PROJECTS · SINCE 2004 · </textPath>
         </text>
       </svg>
-      <b className="display absolute text-[1.6rem] font-medium max-md:text-[1.3rem]" style={{ fontVariationSettings: '"SOFT" 80' }}>
+      <b className="display absolute text-[1.6rem] font-medium max-md:text-[1.3rem]">
         2004
       </b>
     </div>

@@ -14,6 +14,7 @@
   light orange (#f8dbbe) replaces every dark band/page plus Events and Support, cream
   alternates, black only for stats bar + footer. Contact keeps the original design.
 - /althome (centered alternate home) deleted.
+- Display font is now EB Garamond (replaces Fraunces) site-wide, weight 460; wordmark 2rem.
 
 # Hosted release configuration — October 25, 2026
 

@@ -14,7 +14,7 @@ export function QuoteBand() {
       <Container className="grid items-center gap-[clamp(24px,5vw,72px)] md:grid-cols-[1.1fr_0.9fr]">
         <Reveal className="flex flex-col gap-4">
           <span className="eyebrow text-gold">{homeQuote.eyebrow}</span>
-          <p className="display max-w-[28ch] text-[clamp(1.5rem,2.9vw,2.4rem)] font-light italic leading-[1.3]" style={{ fontVariationSettings: '"SOFT" 100, "WONK" 1' }}>
+          <p className="display max-w-[28ch] text-[clamp(1.5rem,2.9vw,2.4rem)] font-light italic leading-[1.3]">
             <span aria-hidden="true" className="mb-2 mt-8 block text-[5rem] not-italic leading-[0] text-gold">“</span>
             {homeQuote.text}
           </p>
