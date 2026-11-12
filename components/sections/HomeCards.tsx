@@ -2,21 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { scholarship } from "@/content/scholarship";
+import { boardPhoto } from "@/content/people";
 import { story } from "@/content/about";
 import { getNewsletters } from "@/lib/data";
 import { cn } from "@/lib/cn";
 
 const buildCards = (newsletters: { year: number }[]) => [
   {
-    href: "/scholarship",
+    href: "/team",
     tint: "bg-gold-soft",
-    image: scholarship.image,
-    alt: scholarship.imageAlt,
-    meta: "Illinois students",
-    title: scholarship.title,
-    body: "One award a year of $5,000, renewable for four years, for a low-income Illinois student heading to college or university.",
-    link: "Eligibility and application",
+    image: boardPhoto.src,
+    alt: boardPhoto.alt,
+    meta: "Our team",
+    title: "Run entirely by volunteers",
+    body: "The board donates its time and covers every administrative cost, so 100% of donations go to the projects.",
+    link: "Meet the board",
   },
   {
     href: "/newsletters",

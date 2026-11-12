@@ -8,7 +8,6 @@ export const adminSections = [
   { href: "/admin/team", label: "Team", blurb: "Board members, bios and photos" },
   { href: "/admin/newsletters", label: "Newsletters", blurb: "One PDF per year" },
   { href: "/admin/events", label: "Events", blurb: "Fundraisers and gatherings" },
-  { href: "/admin/scholarship", label: "Scholarship", blurb: "Deadline and application link" },
   { href: "/admin/site", label: "Site details", blurb: "Email, phone, address, donate handles" },
 ];
 

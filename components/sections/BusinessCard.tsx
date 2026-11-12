@@ -22,14 +22,9 @@ export function BusinessCard({ site }: { site: SiteDetails }) {
         <Row label="Social">
           <a href={site.facebook} target="_blank" rel="noopener" className="font-sans font-bold">{site.facebook.replace(/^https?:\/\/(www\.)?/, "")}</a>
         </Row>
-        <Row label="Mail">
-          <address className="not-italic leading-[1.45] text-ink-2">
-            {site.addressName}<br />{site.street}<br />{site.cityStateZip}
-          </address>
-        </Row>
         <div className="mt-2 flex flex-wrap gap-3">
           <Button href="/support" size="sm">Support the mission</Button>
-          <Button href="/scholarship" size="sm" variant="outline">Scholarship</Button>
+          <Button href="/team" size="sm" variant="outline">Meet the team</Button>
         </div>
       </div>
     </div>

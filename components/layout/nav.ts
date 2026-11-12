@@ -9,7 +9,6 @@ export const aboutMenu: NavItem[] = [
 
 export const mainNav: NavItem[] = [
   { label: "Projects", href: "/projects" },
-  { label: "Scholarship", href: "/scholarship" },
   { label: "Events", href: "/events" },
   { label: "Contact", href: "/contact" },
 ];

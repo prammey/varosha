@@ -7,7 +7,7 @@ import { site } from "@/content/site";
  * The Varosha emblem (public/brand/logo.svg) with the wordmark beside it.
  * `tone="dark"` for the footer. `tag` is the small line under the name.
  */
-export function Logo({ tone = "light", tag = `Since ${site.foundedYear} · ${site.location}`, className }: { tone?: "light" | "dark"; tag?: string; className?: string }) {
+export function Logo({ tone = "light", tag = `Since ${site.foundedYear}`, className }: { tone?: "light" | "dark"; tag?: string; className?: string }) {
   const dark = tone === "dark";
   return (
     <Link href="/" aria-label="Varosha home" className={cn("group flex items-center gap-3.5 no-underline", dark ? "text-on-plum" : "text-ink", className)}>

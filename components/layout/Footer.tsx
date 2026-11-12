@@ -11,7 +11,6 @@ const columns = [
     links: [
       { label: "Our Story", href: "/about" },
       { label: "Projects", href: "/projects" },
-      { label: "Scholarship", href: "/scholarship" },
       { label: "Our Team", href: "/team" },
       { label: "Events", href: "/events" },
     ],
@@ -45,7 +44,6 @@ export async function Footer() {
               <li><Link href="/contact" className="text-on-plum no-underline hover:text-gold">{site.email}</Link></li>
               <li><Link href="/contact" className="text-on-plum no-underline hover:text-gold">{site.phone}</Link></li>
               <li><a href={site.facebook} target="_blank" rel="noopener" className="text-on-plum no-underline hover:text-gold">Facebook</a></li>
-              <li>{site.street}<br />{site.cityStateZip}</li>
             </ul>
           </div>
 

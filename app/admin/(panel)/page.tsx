@@ -11,7 +11,6 @@ export default async function AdminHome() {
     "/admin/team": `${data.people.length} members`,
     "/admin/newsletters": `${data.newsletters.length} years`,
     "/admin/events": `${data.events.length} events`,
-    "/admin/scholarship": data.scholarship.deadline ? "Deadline set" : "No deadline",
     "/admin/site": data.site.email || "Not set",
   };
 

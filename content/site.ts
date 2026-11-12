@@ -8,7 +8,6 @@ export const site = {
     "Varosha is a 501(c)(3) nonprofit that funds skills training for women and young people in West Bengal, India, then backs each graduate with an interest-free loan to start a business of their own.",
   founded: "April 2004",
   foundedYear: 2004,
-  location: "Palatine, IL",
   email: "contact@varosha.org",
   phone: "847-920-8153",
   address: {
