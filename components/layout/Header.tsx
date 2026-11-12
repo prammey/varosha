@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { Logo } from "./Logo";
-import { aboutMenu, donateHref, mainNav } from "./nav";
+import { aboutMenu, donateHref, homeNav, mainNav } from "./nav";
 
 /**
  * Sticky header that slides away on scroll-down and returns on scroll-up.
@@ -110,6 +110,14 @@ export function Header() {
                 menuOpen ? "max-lg:flex" : "max-lg:hidden",
               )}
             >
+              <Link
+                href={homeNav.href}
+                aria-current={pathname === homeNav.href ? "page" : undefined}
+                className={cn(linkCls(pathname === homeNav.href), "max-lg:py-[0.8em] max-lg:text-[1.1rem]")}
+              >
+                {homeNav.label}
+              </Link>
+
               {/* About dropdown */}
               <div
                 ref={aboutRef}
