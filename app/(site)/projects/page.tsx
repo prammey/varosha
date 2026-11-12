@@ -17,7 +17,7 @@ export default async function ProjectsPage() {
       <PageHeader
         tone="dark"
         eyebrow="Projects"
-        title={<>{projects.length === 11 ? "Eleven" : projects.length} projects, <em className="text-gold">one method</em>.</>}
+        title={<>{projects.length === 11 ? "Eleven" : projects.length} projects, <em className="text-gold">3,500+ lives</em>.</>}
         lede="Here you’ll find a selection of projects supported by Varosha over the years. Open any project to learn more about what we do."
       />
       <Container className="flex flex-col gap-8 pb-[clamp(60px,8vw,120px)]">
