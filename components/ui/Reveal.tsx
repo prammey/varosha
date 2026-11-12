@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ElementType, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 type Props = {
@@ -13,11 +13,14 @@ type Props = {
 
 /**
  * Fades and lifts its children in the first time they scroll into view.
- * Adds the "in" class straight to the element, so there is no re-render.
+ * "Shown" lives in React state: if it were only added to the DOM, a re-render that
+ * changes the class list (e.g. a new delay after filtering) would erase it and the
+ * element would stay invisible.
  * Shows immediately if IntersectionObserver is unavailable.
  */
 export function Reveal({ children, delay = 0, className, as: Tag = "div" }: Props) {
   const ref = useRef<HTMLElement | null>(null);
+  const [shown, setShown] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -28,11 +31,9 @@ export function Reveal({ children, delay = 0, className, as: Tag = "div" }: Prop
     }
     const io = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            el.classList.add("in");
-            io.disconnect();
-          }
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShown(true);
+          io.disconnect();
         }
       },
       { rootMargin: "0px 0px -6% 0px", threshold: 0.05 },
@@ -42,7 +43,7 @@ export function Reveal({ children, delay = 0, className, as: Tag = "div" }: Prop
   }, []);
 
   return (
-    <Tag ref={ref} className={cn("rv", delay > 0 && `d${delay}`, className)}>
+    <Tag ref={ref} className={cn("rv", delay > 0 && `d${delay}`, shown && "in", className)}>
       {children}
     </Tag>
   );
