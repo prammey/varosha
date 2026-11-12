@@ -1,124 +1,174 @@
 /*
-  Brand-colors preview (/alt). Light beige pages, the orange from the logo as the
-  accent, Varosha's traditional red as a second color.
+  Brand-colors preview (/alt): "lamp-black and copper".
+  Built from varosha.org's own three colors, each given one job:
+    Paper / Sand  every page background (light, as the board asked)
+    Copper        the brand accent, from the logo's rays and the old site's banners
+    Red           actions only: Donate and primary buttons
+    Lamp-black    type, plus small dark anchors (stats bar, contact card, footer)
+                  that echo the black square of the logo
 
   Everything here applies only when app/(site)/layout.tsx wraps the page in
   .theme-alt, which happens after a visitor opens /alt. The current design never
-  matches these rules. To adopt this palette for good, move the token values into
-  globals.css; to drop it, delete this file and its import.
+  matches these rules. Delete this file and its import to remove the preview.
 */
 
 :root:has(.theme-alt) {
+  --alt-paper: #faf6ef;
+  --alt-sand: #f2ebdf;
+  --alt-card: #fffdf9;
+  --alt-ink: #1c1714;
+  --alt-ink-2: #4f4640;
+  --alt-copper: #d07a35;
+  --alt-copper-deep: #a8541a;
+  --alt-red: #b3261e;
+  --alt-red-deep: #8f1d17;
+  --alt-hairline: 0 0 0 1px rgba(28, 23, 20, 0.07);
+
   /* light surfaces */
-  --color-cream: #fbf6ee;
-  --color-cream-2: #f5ecdf;
-  --color-sand: #ede2d0;
+  --color-cream: var(--alt-paper);
+  --color-cream-2: var(--alt-sand);
+  --color-sand: #e9dfcf;
 
-  /* espresso text */
-  --color-ink: #2b1e16;
-  --color-ink-2: #5e4c3f;
-  --color-mute: #7e6b5d;
-  --color-line: #e8dccb;
+  /* type */
+  --color-ink: var(--alt-ink);
+  --color-ink-2: var(--alt-ink-2);
+  --color-mute: #766a61;
+  --color-line: #e6dccd;
 
-  /* "maroon" slot becomes Ember: the logo orange, deepened so text stays readable */
-  --color-maroon: #a9500d;
-  --color-maroon-2: #8e430b;
-  --color-maroon-3: #6e3409;
-  --color-rose: #fbe7d6;
-  --color-rose-2: #f5d2b6;
+  /* "maroon" = accent type in deep copper (readable on paper) */
+  --color-maroon: var(--alt-copper-deep);
+  --color-maroon-2: #8c4414;
+  --color-maroon-3: #6b3510;
 
-  /* "gold" slot becomes Saffron: the exact logo orange, for fills only */
-  --color-gold: #e17317;
-  --color-gold-2: #c8620e;
-  --color-gold-soft: #fdf1d9;
+  /* every old tint collapses to one quiet copper wash: no pink, no yellow */
+  --color-rose: #f5eadc;
+  --color-rose-2: #eedcc6;
+  --color-gold-soft: #f5eadc;
+  --color-teal-soft: #f5eadc;
 
-  /* "teal" slot becomes Sindoor red; its dark band becomes a warm wash */
-  --color-teal: #a8322a;
-  --color-teal-2: #faf0e4;
-  --color-teal-soft: #f8e0da;
+  /* "gold" = copper fills, always with dark type on top */
+  --color-gold: var(--alt-copper);
+  --color-gold-2: var(--alt-copper-deep);
 
-  /* the dark surfaces become light; text on them becomes espresso */
-  --color-plum: #f5ecdf;
-  --color-plum-3: #fffcf7;
-  --color-on-plum: #2b1e16;
-  --color-on-plum-2: #5e4c3f;
-  /* plum-2 stays dark: it is also the text color on Saffron buttons */
+  /* "teal" bands become paper; teal type becomes copper */
+  --color-teal: var(--alt-copper-deep);
+  --color-teal-2: var(--alt-paper);
 
-  --shadow-card: 0 2px 6px rgba(43, 30, 22, 0.06), 0 24px 48px -20px rgba(43, 30, 22, 0.24);
+  /* the dark tokens become lamp-black (used only where a dark anchor stays) */
+  --color-plum: #241e1a;
+  --color-plum-2: var(--alt-ink);
+  --color-plum-3: #322a25;
+  --color-on-plum: #f6efe6;
+  --color-on-plum-2: #c9bcb0;
 
-  --alt-band: #f1e4d1;
-  --alt-blush: #f6dfd5;
-  --alt-ember: #a9500d;
-  --alt-sindoor: #a8322a;
+  --shadow-card: 0 1px 2px rgba(28, 23, 20, 0.06), 0 22px 44px -22px rgba(28, 23, 20, 0.28);
 }
 
-/* ---- sections that were dark: now light bands ---- */
+/* ---- pages and bands that were dark become light ---- */
 
-.theme-alt .bg-plum-2 { background-color: var(--alt-band); }
+/* Inside these, "text on dark" turns into lamp-black type and cards turn white */
+.theme-alt :is(main > div.bg-plum, section.bg-plum-2, .bg-teal-2, section.bg-maroon, main > div:has(> [class*="1e1219"])) {
+  --color-on-plum: var(--alt-ink);
+  --color-on-plum-2: var(--alt-ink-2);
+  --color-plum-3: var(--alt-card);
+}
+.theme-alt main > div.bg-plum { background-color: var(--alt-paper); }
+.theme-alt section.bg-plum-2,
+.theme-alt div.bg-plum-2[aria-hidden="true"],
+.theme-alt section.bg-maroon { background-color: var(--alt-sand); }
+.theme-alt .fill-maroon { fill: var(--alt-sand); }
 @media (max-width: 767.98px) {
-  /* How it works: cream top quarter behind the stats bar, then the band */
+  /* How it works on phones: paper behind the top quarter of the stats bar */
   .theme-alt section.bg-plum-2 > div:first-child {
-    background-image: linear-gradient(to bottom, var(--color-cream) 25%, var(--alt-band) 25%);
+    background-image: linear-gradient(to bottom, var(--alt-paper) 25%, var(--alt-sand) 25%);
   }
 }
 
-/* Quote band and the About facts band were maroon */
-.theme-alt section.bg-maroon { background-color: var(--alt-blush); }
-.theme-alt .text-\[\#f0d4dc\] { color: var(--color-ink-2); }
-.theme-alt .text-white\/5 { color: rgba(169, 80, 13, 0.07); }
-.theme-alt .bg-black\/\[0\.18\] { background-color: rgba(255, 252, 247, 0.75); }
-
-/* the Contact card's colored half stays orange, with white type */
-.theme-alt div.bg-maroon.text-on-plum { color: #fff; }
-
-/* Contact page: light veil over the photo instead of a dark one */
-.theme-alt [class*="1e1219"]::after {
-  background: linear-gradient(180deg, var(--color-cream) 0%, rgba(251, 246, 238, 0.72) 50%, var(--color-cream) 100%);
+/* Small dark anchors keep light type, even inside a light band */
+.theme-alt .bg-plum:not(main > .bg-plum) {
+  --color-on-plum: #f6efe6;
+  --color-on-plum-2: #c9bcb0;
+  --color-plum-3: #322a25;
 }
 
-/* translucent white cards were made for dark bands */
+/* The stats bar stays black only on the home page; on Support it is a light card,
+   so that page doesn't stack two black blocks */
+.theme-alt main .bg-plum.shadow-card:not(section.bg-plum-2 *) {
+  --color-on-plum: var(--alt-ink);
+  --color-on-plum-2: var(--alt-ink-2);
+  --color-plum-3: var(--alt-paper);
+  background-color: var(--alt-card);
+  box-shadow: var(--alt-hairline), var(--shadow-card);
+}
+.theme-alt main .bg-plum.shadow-card:not(section.bg-plum-2 *) .text-gold { color: var(--alt-copper-deep); }
+.theme-alt main .bg-plum.shadow-card:not(section.bg-plum-2 *) :is(.border-white\/10, .md\:border-white\/10) {
+  border-color: rgba(28, 23, 20, 0.08);
+}
+
+/* white cards on light bands: thin hairline instead of a tint */
+.theme-alt :is(main > div.bg-plum, .bg-teal-2) .bg-plum-3,
 .theme-alt .bg-white\/\[0\.07\],
-.theme-alt .bg-white\/\[0\.06\] { background-color: #fffcf7; }
+.theme-alt .bg-white\/\[0\.06\] {
+  background-color: var(--alt-card);
+  box-shadow: var(--alt-hairline);
+}
 .theme-alt .hover\:bg-white\/\[0\.12\]:hover { background-color: #fff; }
+.theme-alt .bg-black\/\[0\.18\] { background-color: var(--alt-card); box-shadow: var(--alt-hairline); }
 
-/* hairlines and outlines drawn in white */
-.theme-alt .border-white\/10,
-.theme-alt .md\:border-white\/10 { border-color: rgba(43, 30, 22, 0.1); }
-.theme-alt .border-white\/20 { border-color: rgba(43, 30, 22, 0.2); }
-.theme-alt .border-white\/50 { border-color: rgba(43, 30, 22, 0.35); }
+/* How it works: three white cards instead of three tints */
+.theme-alt section.bg-plum-2 :is(.bg-rose, .bg-gold-soft, .bg-teal-soft) {
+  background-color: var(--alt-card);
+  box-shadow: var(--alt-hairline);
+}
 
-/* pale teal text on the old teal bands */
-.theme-alt .text-\[\#bfdadb\] { color: var(--color-ink-2); }
+/* outlines and labels that were drawn for dark backgrounds */
+.theme-alt main .border-white\/20 { border-color: rgba(28, 23, 20, 0.18); }
+.theme-alt main .border-white\/50 { border-color: rgba(28, 23, 20, 0.35); }
+.theme-alt .text-\[\#bfdadb\] { color: var(--alt-ink-2); }
+.theme-alt .text-\[\#f0d4dc\] { color: var(--alt-ink-2); }
+.theme-alt .text-white\/5 { color: rgba(168, 84, 26, 0.08); }
 
-/* ---- accents ---- */
+/* Contact page: paper veil over the photo instead of a dark one */
+.theme-alt [class*="1e1219"]::after {
+  background: linear-gradient(180deg, var(--alt-paper) 0%, rgba(250, 246, 239, 0.74) 50%, var(--alt-paper) 100%);
+}
 
-/* gold text was for dark backgrounds; on beige it needs the deeper orange */
-.theme-alt .text-gold,
-.theme-alt .hover\:text-gold:hover { color: var(--alt-ember); }
+/* ---- copper ---- */
 
-.theme-alt .hover\:bg-\[\#f0b84f\]:hover { background-color: #ec8a3a; border-color: #ec8a3a; }
+/* gold type was made for dark backgrounds: on paper it uses deep copper */
+.theme-alt main .text-gold { color: var(--alt-copper-deep); }
+.theme-alt main .bg-plum:not(main > .bg-plum) .text-gold { color: var(--alt-copper); }
 
-/* closing CTA strip: espresso button and text on the Saffron band */
-.theme-alt div.bg-gold a.bg-maroon { background-color: var(--color-ink); border-color: var(--color-ink); }
-.theme-alt div.bg-gold a.bg-maroon:hover { background-color: #000; border-color: #000; }
-.theme-alt div.bg-gold .text-maroon-3 { color: var(--color-ink); }
+/* the tilted block behind the hero photo */
+.theme-alt span.bg-maroon { background-color: var(--alt-copper); }
 
-/* header Donate block in the traditional Varosha red */
-.theme-alt header a.bg-maroon { background-color: var(--alt-sindoor); }
-
-/* hero highlighter stroke in the logo orange */
+/* hero highlighter in copper */
 .theme-alt .hero-marker {
   background-image:
     linear-gradient(var(--color-cream), var(--color-cream)),
     linear-gradient(var(--color-cream), var(--color-cream)),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M7 26 Q93 15 190 21 T392 15 T604 20 T812 13 Q921 9 992 18 L998 76 Q905 89 803 82 T602 89 T400 82 T197 90 Q82 92 2 80 Z' fill='%23e17317' opacity='.42'/%3E%3Cpath d='M15 38 Q180 27 350 33 T682 27 Q856 23 987 30 L990 69 Q831 76 663 72 T335 78 Q146 83 9 72 Z' fill='%23e17317' opacity='.14'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M7 26 Q93 15 190 21 T392 15 T604 20 T812 13 Q921 9 992 18 L998 76 Q905 89 803 82 T602 89 T400 82 T197 90 Q82 92 2 80 Z' fill='%23d07a35' opacity='.38'/%3E%3Cpath d='M15 38 Q180 27 350 33 T682 27 Q856 23 987 30 L990 69 Q831 76 663 72 T335 78 Q146 83 9 72 Z' fill='%23d07a35' opacity='.14'/%3E%3C/svg%3E");
 }
 
-/* About page: the wavy divider leading into the (now blush) mission band */
-.theme-alt .fill-maroon { fill: var(--alt-blush); }
+.theme-alt .hover\:bg-\[\#f0b84f\]:hover { background-color: #dc8b48; border-color: #dc8b48; }
+
+/* the closing copper band: lamp-black type and button, like the old site's banners */
+.theme-alt div.bg-gold .text-maroon-3 { color: var(--alt-ink); }
+.theme-alt div.bg-gold a.bg-maroon { background-color: var(--alt-ink); border-color: var(--alt-ink); }
+.theme-alt div.bg-gold a.bg-maroon:hover { background-color: #000; border-color: #000; }
+
+/* ---- red: actions only ---- */
+
+.theme-alt a.bg-maroon { background-color: var(--alt-red); border-color: var(--alt-red); }
+.theme-alt a.bg-maroon:hover { background-color: var(--alt-red-deep); border-color: var(--alt-red-deep); }
+
+/* ---- lamp-black anchors ---- */
+
+/* Contact card: black half with the logo, like the emblem itself */
+.theme-alt div.bg-maroon.text-on-plum { background-color: var(--alt-ink); color: #f6efe6; }
 
 /* Support page: the QR graphic has white labels, so its panel stays dark */
-.theme-alt .bg-plum:has(img[src*="zelle-venmo-qr"]) {
-  background-color: var(--color-ink);
-  color: #e8dccb;
-}
+.theme-alt .bg-plum:has(img[src*="zelle-venmo-qr"]) { background-color: var(--alt-ink); }
+
+/* footer: a thin copper rule on top, a nod to the old site's copper strip */
+.theme-alt footer.bg-plum-2 { box-shadow: inset 0 4px 0 var(--alt-copper); }
