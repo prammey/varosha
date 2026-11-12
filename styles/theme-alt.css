@@ -17,7 +17,8 @@
   --alt-cream: #fbf4e8;
   --alt-apricot: #f8dbbe;
   --alt-card: #fffaf4;
-  --alt-orange: #dd7a30;
+  /* terracotta: the logo's orange in shadow, so the yellow 2004 badge pops against it */
+  --alt-orange: #c8612a;
   --alt-red: #b3261e;
   --alt-ink: #2a1e1a;
   --alt-ink-2: #574740;
@@ -142,22 +143,17 @@
 /* the tilted block behind the hero photo */
 .theme-alt span.bg-maroon { background-color: var(--alt-orange); }
 
-/* ---- Contact: the original card exactly, on a light "sunset" page ----
-   Cream at the top fading to warm orange at the bottom, with the photo still
-   showing through: the same depth as the original dark veil, but lit like a
-   lamp instead of night. Orange and maroon are both reds, so the card sits in
-   its own color family. */
+/* ---- Contact: the original card and white headline, on a warmer, clearer photo ----
+   Dark at the top for the white "Get involved.", clearest in the middle so the photo
+   reads behind the card, then deepening into the footer color so there's no seam.
+   The original's structure, in warm espresso-wine instead of plum. */
 
 .theme-alt main > div:has(> [class*="1e1219"]) > div:first-child::after {
-  background: linear-gradient(180deg, #fbf4e8 0%, rgba(250, 232, 212, 0.74) 45%, #f6cfae 100%);
+  background: linear-gradient(180deg, rgba(31, 24, 21, 0.86) 0%, rgba(58, 30, 30, 0.5) 38%, rgba(58, 30, 30, 0.42) 62%, #1f1815 100%);
 }
-.theme-alt main > div:has(> [class*="1e1219"]) .text-center.text-on-plum { color: #2a1e22; }
-.theme-alt main > div:has(> [class*="1e1219"]) .text-center.text-on-plum .text-on-plum-2 { color: #5a4a50; }
-.theme-alt main > div:has(> [class*="1e1219"]) .text-center.text-on-plum .text-gold { color: #93304a; }
-/* a softer, maroon-tinted shadow under the card on the light page */
-.theme-alt main > div:has(> [class*="1e1219"]) .shadow-\[0_40px_80px_-30px_rgba\(0\,0\,0\,\.7\)\] {
-  box-shadow: 0 40px 80px -34px rgba(90, 26, 43, 0.45);
-}
+.theme-alt main > div:has(> [class*="1e1219"]) > div:first-child img { opacity: 0.62; }
+/* the intro line sits over a brighter photo now, so it is a touch lighter */
+.theme-alt main > div:has(> [class*="1e1219"]) .text-center.text-on-plum .text-on-plum-2 { color: #e8dcd2; }
 
 /* card and page tokens: the original design's values */
 
