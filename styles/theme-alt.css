@@ -138,6 +138,14 @@
   --color-maroon-2: #7c1f16;
 }
 
+/* home stats bar: wine-espresso, black with a faint red undertone that ties it to the
+   red Donate and headline words above it and to the Contact page's photo shade;
+   the yellow numbers glow warmer on it (7.1:1) */
+.theme-alt section.bg-plum-2 .bg-plum.shadow-card {
+  background-color: #3a1e1e;
+  --color-plum-3: #4a2826;
+}
+
 /* ---- orange ---- */
 
 /* the tilted block behind the hero photo */
