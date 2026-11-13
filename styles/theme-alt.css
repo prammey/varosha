@@ -144,11 +144,13 @@
   --color-maroon-2: #7c1f16;
 }
 
-/* home stats bar: oxblood, a deep red just under maroon; ties to the red Donate and
-   headline words above; saffron numbers 7.7:1 */
+/* home stats bar: the site's deep red (--color-maroon-3, also the "Join us" subtitle
+   text), the same hue as the Donate red in shadow, so it matches instead of adding a
+   new red; saffron numbers 6.7:1, cream labels 10:1 */
 .theme-alt section.bg-plum-2 .bg-plum.shadow-card {
-  background-color: #521d21;
-  --color-plum-3: #62282c;
+  background-color: var(--color-maroon-3);
+  --color-on-plum-2: #f7ede2;
+  --color-plum-3: #7e1d16;
 }
 
 /* yellow buttons: hover a touch lighter than the saffron-gold, not the old duller gold */
