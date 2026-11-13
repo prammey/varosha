@@ -73,8 +73,11 @@
 .theme-alt .fill-maroon { fill: var(--alt-apricot); }
 /* "What your support has built" stays cream, between two orange bands */
 .theme-alt section.bg-teal-2 { background-color: var(--alt-cream); }
-/* Newsletters (the page that links to PDFs) stays cream, so orange doesn't cover every page */
-.theme-alt main > div.bg-plum:has(a[href$=".pdf"]) { background-color: var(--alt-cream); }
+/* About (the page with the maroon wavy divider) and Support (the QR page) are light orange
+   too, like Projects, Events, Team and Newsletters; only Home alternates cream and orange */
+.theme-alt main:has(.fill-maroon),
+.theme-alt main:has(img[src*="zelle-venmo-qr"]) { background-color: var(--alt-apricot); }
+.theme-alt main:has(.fill-maroon) > div.bg-cream[aria-hidden="true"] { background-color: transparent; }
 
 /* Events: the whole page is light orange */
 .theme-alt main:has(> section.bg-cream-2),
@@ -141,12 +144,12 @@
   --color-maroon-2: #7c1f16;
 }
 
-/* home stats bar: wine-espresso, black with a faint red undertone that ties it to the
-   red Donate and headline words above it and to the Contact page's photo shade;
-   the yellow numbers glow warmer on it (7.1:1) */
+/* home stats bar: deep wine, a very deep red just under maroon, so it reads as a
+   touch of red rather than black; ties to the red Donate and headline words above;
+   saffron numbers 7.9:1 */
 .theme-alt section.bg-plum-2 .bg-plum.shadow-card {
-  background-color: #3a1e1e;
-  --color-plum-3: #4a2826;
+  background-color: #4a1f22;
+  --color-plum-3: #5a2a2d;
 }
 
 /* yellow buttons: hover a touch lighter than the saffron-gold, not the old duller gold */
