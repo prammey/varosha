@@ -20,7 +20,7 @@ export default async function EventsPage() {
     <>
       <PageHeader
         eyebrow="Events"
-        title={<>Gatherings, exhibitions, <em className="text-maroon">and summits</em>.</>}
+        title="Gatherings, exhibitions, and summits."
         lede="Where Varosha’s supporters in Illinois meet the work happening in West Bengal."
       />
 

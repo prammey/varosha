@@ -22,7 +22,7 @@ export default async function AboutPage() {
     <>
       <PageHeader
         eyebrow={story.eyebrow}
-        title={<>A simple idea, held for <em className="text-maroon">over twenty years</em>.</>}
+        title={<>An idea, held for<br /> over <em className="text-maroon">twenty years</em>.</>}
         lede={story.lede}
       />
 

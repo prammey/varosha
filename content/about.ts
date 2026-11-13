@@ -3,7 +3,7 @@
  */
 export const story = {
   eyebrow: "Our Story",
-  headline: "A simple idea, held for over twenty years.",
+  headline: "An idea, held for over twenty years.",
   lede: "Everyone should have a chance to provide a decent quality of life for themselves and their families.",
   paragraphs: [
     "Varosha began in April 2004 with the simple idea that everyone should have a chance to provide a decent quality of life for themselves and their families. As many around the world do not have the means or opportunity to learn employable skills, they are stuck within a cycle of poverty and hopelessness. Varosha is a nonprofit organization dedicated to providing education, resources, and expertise to economically empower individuals.",

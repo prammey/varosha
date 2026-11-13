@@ -19,7 +19,7 @@ export default async function TeamPage() {
       <PageHeader
         tone="dark"
         eyebrow="Members"
-        title={<>The people <em className="text-gold">behind Varosha</em>.</>}
+        title={<>The <em className="text-gold">people</em> behind Varosha.</>}
         lede="A volunteer board based in the Chicago area, with deep ties to Kolkata. Every administrative cost is covered by the directors themselves."
       />
       <Container className="a4 max-w-[1000px]">

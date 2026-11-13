@@ -25,7 +25,7 @@ export default async function SupportPage() {
     <>
       <PageHeader
         eyebrow="Support Varosha"
-        title={<>Join us in making <em className="text-maroon">a difference</em>.</>}
+        title={<>Join us in making a <em className="text-maroon">difference</em>.</>}
         lede="Varosha is a nonprofit organization dedicated to providing education, resources, and expertise to empower individuals. We rely on the support and involvement of our community to make a lasting impact."
       />
       <Container className="flex flex-col gap-7 pb-[clamp(60px,8vw,120px)]">
