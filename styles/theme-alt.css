@@ -37,7 +37,10 @@
   --color-rose: #fbe2de;
   --color-rose-2: #f6cfc8;
 
-  /* "gold" stays the original yellow: --color-gold, -gold-2, -gold-soft unchanged */
+  /* "gold" = saffron-gold: brighter and more saturated than the original #e3a63a so the
+     "Join us" strip, badge, numbers and footer Donate pop against cream and light orange,
+     while staying golden (not lemon) and clearly apart from the copper hero block */
+  --color-gold: #ffb52e;
 
   /* "teal" = orange: deep orange type, pale orange tint, cream band */
   --color-teal: #b85a18;
@@ -144,6 +147,17 @@
 .theme-alt section.bg-plum-2 .bg-plum.shadow-card {
   background-color: #3a1e1e;
   --color-plum-3: #4a2826;
+}
+
+/* yellow buttons: hover a touch lighter than the saffron-gold, not the old duller gold */
+.theme-alt .hover\:bg-\[\#f0b84f\]:hover { background-color: #ffc457; border-color: #ffc457; }
+
+/* hero highlighter stroke in the same saffron-gold */
+.theme-alt .hero-marker {
+  background-image:
+    linear-gradient(var(--color-cream), var(--color-cream)),
+    linear-gradient(var(--color-cream), var(--color-cream)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M7 26 Q93 15 190 21 T392 15 T604 20 T812 13 Q921 9 992 18 L998 76 Q905 89 803 82 T602 89 T400 82 T197 90 Q82 92 2 80 Z' fill='%23ffb52e' opacity='.52'/%3E%3Cpath d='M15 38 Q180 27 350 33 T682 27 Q856 23 987 30 L990 69 Q831 76 663 72 T335 78 Q146 83 9 72 Z' fill='%23ffb52e' opacity='.17'/%3E%3C/svg%3E");
 }
 
 /* ---- orange ---- */
