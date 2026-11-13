@@ -8,9 +8,9 @@
     Black    only the stats bar and the footer, so the yellow has something to sit on
   The Contact page keeps the original design exactly.
 
-  Everything here applies only when app/(site)/layout.tsx wraps the page in
-  .theme-alt, which happens after a visitor opens /alt. The current design never
-  matches these rules. Delete this file and its import to remove the preview.
+  app/(site)/layout.tsx wraps every page in .theme-alt unless the visitor has
+  chosen the current design via /original; the floating switcher flips between
+  them. The current design never matches these rules.
 */
 
 :root:has(.theme-alt) {
@@ -46,9 +46,9 @@
   --color-gold-2: #b57a00;
   --color-gold-soft: #ffe8b8;
 
-  /* "teal" = copper: the hero block's copper for the "3", card-white for its tint */
-  --color-teal: #c67131;
-  --color-teal-soft: #fffaf4;
+  /* "teal" = mint: the one cool note on the page, for the Thrive card and its "3" */
+  --color-teal: #1e6e5c;
+  --color-teal-soft: #d7efe4;
   --color-teal-2: var(--alt-cream);
 
   /* dark tokens = warm black, used only for the stats bar, footer and QR panel */
@@ -148,14 +148,23 @@
   --color-maroon-2: #7c1f16;
 }
 
-/* home stats bar: deep red-wine in the Donate red's hue. Dark enough to anchor the
-   hero the way the footer anchors the page, with the red clearly in it; a brighter
-   red here competed with the Donate button above. Saffron numbers 8.4:1 */
+/* home stats bar: a light card with red numbers, the same treatment as the Support
+   page's stats row. It floats over the cream-to-orange seam instead of sitting on it
+   as a dark slab, and the footer stays the page's one dark anchor */
 .theme-alt section.bg-plum-2 .bg-plum.shadow-card {
-  background-color: #4a1c1a;
-  --color-on-plum-2: #f7ede2;
-  --color-plum-3: #5a2624;
+  --color-on-plum: var(--alt-ink);
+  --color-on-plum-2: var(--alt-ink-2);
+  --color-plum-3: var(--alt-cream);
+  background-color: var(--alt-card);
+  box-shadow: var(--alt-hairline), var(--shadow-card);
 }
+.theme-alt section.bg-plum-2 .bg-plum.shadow-card .text-gold { color: var(--alt-red); }
+.theme-alt section.bg-plum-2 .bg-plum.shadow-card :is(.border-white\/10, .md\:border-white\/10) {
+  border-color: rgba(42, 30, 26, 0.08);
+}
+
+/* About dropdown: items tint apricot on hover, not blush */
+.theme-alt header .hover\:bg-rose:hover { background-color: var(--alt-apricot); }
 
 /* home: the Newsletters card is apricot (copper tint) beside the butter Team card */
 .theme-alt section.bg-cream a.bg-rose { background-color: var(--alt-apricot); }

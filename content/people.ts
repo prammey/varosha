@@ -18,5 +18,5 @@ export const people: Person[] = [
 export const boardPhoto = {
   src: "/images/team/board-september-2025.jpg",
   alt: "The Varosha board, eight people standing in front of a Durga Puja pandal, September 2025",
-  caption: "The board",
+  caption: "The Board",
 };

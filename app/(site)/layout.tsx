@@ -9,10 +9,14 @@ import { PREVIEW_COOKIE, type PreviewTheme } from "@/lib/preview-theme";
 // Fetch published content on each visitor request, including after a server restart.
 export const dynamic = "force-dynamic";
 
-/** Every public page gets the header, the social rail and the footer. */
+/**
+ * Every public page gets the header, the social rail and the footer.
+ * The site opens in the brand colors; the floating switcher (always shown) lets
+ * the board flip to the current design, which sets a session cookie via /original.
+ */
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
   const cookie = (await cookies()).get(PREVIEW_COOKIE)?.value;
-  const preview: PreviewTheme | null = cookie === "alt" || cookie === "original" ? cookie : null;
+  const theme: PreviewTheme = cookie === "original" ? "original" : "alt";
 
   const page = (
     <>
@@ -26,8 +30,8 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
   return (
     <>
       {/* styles/theme-alt.css recolors everything inside .theme-alt */}
-      {preview === "alt" ? <div className="theme-alt">{page}</div> : page}
-      {preview && <PreviewSwitcher current={preview} />}
+      {theme === "alt" ? <div className="theme-alt">{page}</div> : page}
+      <PreviewSwitcher current={theme} />
       <OverscrollColor />
     </>
   );

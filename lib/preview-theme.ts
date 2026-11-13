@@ -1,9 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 /**
- * Design preview for the board: /alt shows the whole site in brand colors,
- * /original shows the current design. Visitors who never open either link
- * see the current design with no switcher.
+ * Design preview for the board: the site opens in brand colors, and the
+ * floating switcher links to /original (current design) or /alt (brand
+ * colors), each of which sets a session cookie and sends the visitor back.
  */
 export const PREVIEW_COOKIE = "varosha-preview";
 export type PreviewTheme = "alt" | "original";
