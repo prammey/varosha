@@ -138,6 +138,11 @@
   --color-maroon-2: #7c1f16;
 }
 
+/* footer column headings in light terracotta: the Donate button stays the footer's
+   single yellow highlight, and the brand's orange appears in the footer too
+   (lifted from the hero's #c8612a so it reads on black: 6.6:1) */
+.theme-alt footer h4.text-gold { color: #e08a52; }
+
 /* ---- orange ---- */
 
 /* the tilted block behind the hero photo */
