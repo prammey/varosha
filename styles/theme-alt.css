@@ -144,12 +144,11 @@
   --color-maroon-2: #7c1f16;
 }
 
-/* home stats bar: deep wine, a very deep red just under maroon, so it reads as a
-   touch of red rather than black; ties to the red Donate and headline words above;
-   saffron numbers 7.9:1 */
+/* home stats bar: oxblood, a deep red just under maroon; ties to the red Donate and
+   headline words above; saffron numbers 7.7:1 */
 .theme-alt section.bg-plum-2 .bg-plum.shadow-card {
-  background-color: #4a1f22;
-  --color-plum-3: #5a2a2d;
+  background-color: #521d21;
+  --color-plum-3: #62282c;
 }
 
 /* yellow buttons: hover a touch lighter than the saffron-gold, not the old duller gold */
