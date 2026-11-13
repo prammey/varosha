@@ -34,17 +34,21 @@
   --color-maroon: var(--alt-red);
   --color-maroon-2: #8f1d17;
   --color-maroon-3: #6e1611;
-  --color-rose: #fbe2de;
-  --color-rose-2: #f6cfc8;
+  /* tints are tints of the brand trio: blush from the red, butter from the saffron;
+     the old maroon pink and the old gold's pale yellow are gone */
+  --color-rose: #f9d5cc;
+  --color-rose-2: #f3c3b8;
 
   /* "gold" = saffron-gold: brighter and more saturated than the original #e3a63a so the
      "Join us" strip, badge, numbers and footer Donate pop against cream and light orange,
      while staying golden (not lemon) and clearly apart from the copper hero block */
   --color-gold: #ffb52e;
+  --color-gold-2: #b57a00;
+  --color-gold-soft: #ffe8b8;
 
-  /* "teal" = orange: deep orange type, pale orange tint, cream band */
-  --color-teal: #b85a18;
-  --color-teal-soft: #fff1e2;
+  /* "teal" = copper: the hero block's copper for the "3", card-white for its tint */
+  --color-teal: #c67131;
+  --color-teal-soft: #fffaf4;
   --color-teal-2: var(--alt-cream);
 
   /* dark tokens = warm black, used only for the stats bar, footer and QR panel */
@@ -144,14 +148,17 @@
   --color-maroon-2: #7c1f16;
 }
 
-/* home stats bar: the site's deep red (--color-maroon-3, also the "Join us" subtitle
-   text), the same hue as the Donate red in shadow, so it matches instead of adding a
-   new red; saffron numbers 6.7:1, cream labels 10:1 */
+/* home stats bar: deep red-wine in the Donate red's hue. Dark enough to anchor the
+   hero the way the footer anchors the page, with the red clearly in it; a brighter
+   red here competed with the Donate button above. Saffron numbers 8.4:1 */
 .theme-alt section.bg-plum-2 .bg-plum.shadow-card {
-  background-color: var(--color-maroon-3);
+  background-color: #4a1c1a;
   --color-on-plum-2: #f7ede2;
-  --color-plum-3: #7e1d16;
+  --color-plum-3: #5a2624;
 }
+
+/* home: the Newsletters card is apricot (copper tint) beside the butter Team card */
+.theme-alt section.bg-cream a.bg-rose { background-color: var(--alt-apricot); }
 
 /* yellow buttons: hover a touch lighter than the saffron-gold, not the old duller gold */
 .theme-alt .hover\:bg-\[\#f0b84f\]:hover { background-color: #ffc457; border-color: #ffc457; }
