@@ -15,12 +15,7 @@ export default function HomePage() {
       <FeaturedProjects />
       <QuoteBand />
       <HomeCards />
-      <CtaStrip
-        title="Join us in making a difference."
-        sub="Zelle is preferred. There are no fees, so every dollar reaches the field."
-        primary={{ href: "/support", label: "Ways to give" }}
-        secondary={{ href: "/contact", label: "Volunteer" }}
-      />
+      <CtaStrip />
     </>
   );
 }

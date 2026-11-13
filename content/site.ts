@@ -29,6 +29,14 @@ export const site = {
   url: "https://varosha.vercel.app",
 } as const;
 
+/** The "Join us" banner at the bottom of every page that has one. */
+export const joinUs = {
+  title: "Join us in making a difference.",
+  sub: "Volunteer, host a gathering, or help us reach new donors.",
+  primary: { href: "/support", label: "Ways to give" },
+  secondary: { href: "/contact", label: "Volunteer" },
+} as const;
+
 /** The four numbers on the home page stats bar. */
 export const stats = [
   { value: "2004", label: "Founded in Chicago, at work in Kolkata ever since" },

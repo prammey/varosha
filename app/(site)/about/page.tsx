@@ -72,7 +72,7 @@ export default async function AboutPage() {
         </Container>
       </section>
 
-      <CtaStrip title="Support Varosha today." primary={{ href: "/support", label: "Donate" }} />
+      <CtaStrip />
     </>
   );
 }

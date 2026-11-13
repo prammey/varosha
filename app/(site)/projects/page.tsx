@@ -23,11 +23,7 @@ export default async function ProjectsPage() {
       <Container className="flex flex-col gap-8 pb-[clamp(60px,8vw,120px)]">
         <ProjectGrid projects={projects} />
       </Container>
-      <CtaStrip
-        title="Support our work."
-        sub="Every project above was funded by individual donors like you."
-        primary={{ href: "/support", label: "Start now" }}
-      />
+      <CtaStrip />
     </div>
   );
 }

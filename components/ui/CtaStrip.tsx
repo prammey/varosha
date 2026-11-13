@@ -1,17 +1,21 @@
 import { Container } from "./Container";
 import { Button } from "./Button";
 import type { ReactNode } from "react";
+import { joinUs } from "@/content/site";
 
 type Props = {
-  title: string;
+  title?: string;
   sub?: string;
-  primary: { href: string; label: string };
+  primary?: { href: string; label: string };
   secondary?: { href: string; label: string };
   children?: ReactNode;
 };
 
-/** The gold band with a headline on the left and buttons on the right. */
-export function CtaStrip({ title, sub, primary, secondary }: Props) {
+/**
+ * The gold band with a headline on the left and buttons on the right.
+ * With no props it shows the shared "Join us" banner from content/site.ts.
+ */
+export function CtaStrip({ title = joinUs.title, sub = joinUs.sub, primary = joinUs.primary, secondary = joinUs.secondary }: Props) {
   return (
     <div className="bg-gold py-[clamp(40px,5vw,72px)] text-plum-2">
       <Container className="flex flex-wrap items-center justify-between gap-5">

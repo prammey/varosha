@@ -31,11 +31,7 @@ export default async function TeamPage() {
       <Container className="py-[clamp(60px,8vw,120px)]">
         <TeamGrid people={people} />
       </Container>
-      <CtaStrip
-        title="Join us in empowering lives today."
-        sub="Volunteer, host a gathering, or help us reach new donors."
-        primary={{ href: "/contact", label: "Get involved" }}
-      />
+      <CtaStrip />
     </div>
   );
 }
